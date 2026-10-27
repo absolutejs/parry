@@ -1,0 +1,61 @@
+     Locking 42 packages to latest compatible versions
+   Compiling libm v0.2.16
+   Compiling autocfg v1.5.1
+   Compiling num-traits v0.2.19
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling bytemuck v1.25.2
+   Compiling safe_arch v1.2.0
+   Compiling syn v3.0.9
+   Compiling approx v0.5.1
+   Compiling byteorder v1.5.0
+   Compiling heapless v0.8.0
+   Compiling foldhash v0.2.0
+   Compiling hash32 v0.3.1
+   Compiling wide v1.7.1
+   Compiling num-complex v0.4.6
+   Compiling stable_deref_trait v1.2.1
+   Compiling thiserror v2.0.21
+   Compiling allocator-api2 v0.2.21
+   Compiling smallvec v1.16.4
+   Compiling equivalent v1.0.3
+   Compiling hashbrown v0.16.1
+   Compiling thiserror-impl v2.0.21
+   Compiling glam v0.33.12
+   Compiling simba v0.10.2
+   Compiling robust v1.2.0
+   Compiling log v0.4.34
+   Compiling ena v0.14.4
+   Compiling spade v2.15.1
+   Compiling rstar v0.13.0
+   Compiling num-derive v0.5.1
+   Compiling glamx v0.3.1
+   Compiling hashbrown v0.17.1
+   Compiling ordered-float v5.5.0
+   Compiling bitflags v2.13.2
+   Compiling arrayvec v0.7.8
+   Compiling downcast-rs v2.0.2
+   Compiling either v1.19.0
+   Compiling slab v0.4.12
+   Compiling static_assertions v1.1.0
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-contact-release/crates/parry3d)
+   Compiling parry3d-f64 v0.31.1 (/home/alexkahn/alex/parry-contact-release/crates/parry3d-f64)
+   Compiling absolutejs-parry-witness-regression v0.1.0 (/home/alexkahn/alex/parry-contact-release/absolutejs/regression)
+    Finished `release` profile [optimized] target(s) in 3m 08s
+     Running unittests src/lib.rs (/home/alexkahn/alex/hello-world/.cache/physics/parry-canonical-regression/release/deps/absolutejs_parry_witness_regression-94f5aabb91817b77)
+
+running 4 tests
+test double::all_replaced_face_vertices_preserve_previous_simplex ... ok
+test single::all_replaced_face_vertices_preserve_previous_simplex ... ok
+test double::tetrahedron_reduction_preserves_previous_support_points ... ok
+test single::tetrahedron_reduction_preserves_previous_support_points ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests absolutejs_parry_witness_regression
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
