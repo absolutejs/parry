@@ -1,0 +1,11 @@
+[workspace]
+
+[package]
+name = "absolutejs-parry-witness-regression"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+parry3d = { path = "../../crates/parry3d" }
+parry3d-f64 = { path = "../../crates/parry3d-f64" }
