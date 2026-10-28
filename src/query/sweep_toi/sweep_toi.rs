@@ -52,6 +52,17 @@ pub fn sweep_time_of_impact(
     max_fraction: Real,
     linear_slop: Real,
 ) -> SweepToiOutput {
+    // Endpoints cannot certify the swept interval when orientation changes.
+    // Preserve the original translating-only algorithm exactly.
+    #[cfg(feature = "dim3")]
+    {
+        let constant = |s: &Sweep| s.q1 == s.q2 || s.q1 == -s.q2;
+        if !constant(sweep_a) || !constant(sweep_b) {
+            return super::rotational::rotational_time_of_impact(
+                proxy_a, sweep_a, proxy_b, sweep_b, max_fraction, linear_slop,
+            );
+        }
+    }
     let mut output = SweepToiOutput {
         status: SweepToiStatus::Separated,
         fraction: max_fraction,

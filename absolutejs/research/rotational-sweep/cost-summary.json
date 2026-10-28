@@ -1,0 +1,50 @@
+{
+  "scope": "Native private-prototype measurement before library routing; source d0b5593; shared-host observations, not FPS; translation uses identical old algorithm, so its apparent speed difference is not a claimed speedup",
+  "rows": [
+    {
+      "scene": "translation-hit",
+      "baselineMedianMs": 1.159843,
+      "candidateMedianMs": 0.8695965,
+      "ratio": 0.7497536304482589,
+      "queriesPerSample": 1024,
+      "baselineStatus": "Hit",
+      "candidateStatus": "Hit"
+    },
+    {
+      "scene": "translation-miss",
+      "baselineMedianMs": 0.3808065,
+      "candidateMedianMs": 0.3697825,
+      "ratio": 0.9710509143094984,
+      "queriesPerSample": 1024,
+      "baselineStatus": "Separated",
+      "candidateStatus": "Separated"
+    },
+    {
+      "scene": "rotating-bar-ball",
+      "baselineMedianMs": 6.7441015,
+      "candidateMedianMs": 6.2704889999999995,
+      "ratio": 0.9297738179059137,
+      "queriesPerSample": 1024,
+      "baselineStatus": "Hit",
+      "candidateStatus": "Hit"
+    },
+    {
+      "scene": "rotating-interior-crossing",
+      "baselineMedianMs": 0.760881,
+      "candidateMedianMs": 4.58189,
+      "ratio": 6.021822072045431,
+      "queriesPerSample": 1024,
+      "baselineStatus": "Separated",
+      "candidateStatus": "Hit"
+    },
+    {
+      "scene": "rotating-clear",
+      "baselineMedianMs": 0.6973605,
+      "candidateMedianMs": 1.1747515,
+      "ratio": 1.6845684549096198,
+      "queriesPerSample": 1024,
+      "baselineStatus": "Separated",
+      "candidateStatus": "Separated"
+    }
+  ]
+}

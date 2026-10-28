@@ -20,6 +20,8 @@ pub use self::composite::{sweep_time_of_impact_composite, SweepCompositeFastShap
 #[cfg(feature = "alloc")]
 mod composite;
 mod proxy_distance;
+#[cfg(feature = "dim3")]
+mod rotational;
 mod separation;
 mod sweep;
 mod sweep_toi;

@@ -31,12 +31,14 @@ fn main(){
   let mut moving=Sweep::from_poses(&start,&end,offset*scale);if negate{moving.q1=-moving.q1}
   let fixed=Sweep::constant(&floor,Vector::ZERO);let a=ToiProxy::from_shape(&triangle).unwrap();let b=ToiProxy::from_shape(&bar).unwrap();let slop=0.00001*scale;
   let (candidate,iterations)=if reverse{interval_candidate::candidate(&b,&moving,&a,&fixed,clip,slop)}else{interval_candidate::candidate(&a,&fixed,&b,&moving,clip,slop)};
-  let baseline=if reverse{sweep_time_of_impact(&b,&moving,&a,&fixed,clip,slop)}else{sweep_time_of_impact(&a,&fixed,&b,&moving,clip,slop)};
+  let library=if reverse{sweep_time_of_impact(&b,&moving,&a,&fixed,clip,slop)}else{sweep_time_of_impact(&a,&fixed,&b,&moving,clip,slop)};
   let expected=first_crossing(&moving,b.points(),&floor,clip as f64,slop as f64);
   let actual_gap=gap(&moving,b.points(),&floor,candidate.fraction as f64)/scale as f64;
-  rows.push(serde_json::json!({"scale":scale,"startAngle":start_angle,"offset":[offset.x,offset.y,offset.z],"rotated":rotated,"reverse":reverse,"clip":clip,"negatedQuaternion":negate,"baselineStatus":format!("{:?}",baseline.status),"candidateStatus":format!("{:?}",candidate.status),"candidateFraction":candidate.fraction,"iterations":iterations,"planeGapAtCandidatePerScale":actual_gap,"oracleTargetFraction":expected}));
+  rows.push(serde_json::json!({"scale":scale,"startAngle":start_angle,"offset":[offset.x,offset.y,offset.z],"rotated":rotated,"reverse":reverse,"clip":clip,"negatedQuaternion":negate,"libraryStatus":format!("{:?}",library.status),"libraryFraction":library.fraction,"candidateStatus":format!("{:?}",candidate.status),"candidateFraction":candidate.fraction,"iterations":iterations,"planeGapAtCandidatePerScale":actual_gap,"oracleTargetFraction":expected}));
  }}}}}}}
  for row in &rows {
+  assert_eq!(row["libraryStatus"],row["candidateStatus"],"Native routing differs");
+  assert_eq!(row["libraryFraction"],row["candidateFraction"],"Native fraction differs");
   let expected=row["oracleTargetFraction"].as_f64();let status=row["candidateStatus"].as_str().unwrap();
   assert_eq!(status,if expected.is_some(){"Hit"}else{"Separated"},"{row}");
   assert!(row["iterations"].as_u64().unwrap()<=25);

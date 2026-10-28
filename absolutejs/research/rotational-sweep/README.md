@@ -57,3 +57,22 @@ bar/ball is about 1.68x; rotating clear is 1.91x. The previously missed interior
 crossing is about 8.90x, comparing different outcomes. These are native shared-host
 measurements, not FPS. Preserve the working translation path and reduce redundant
 projection transforms before considering engine integration.
+
+## Native library research integration
+
+The optimized prototype still passes all strict cases; bounded native ratios
+are retained in cost-summary.json. Identical translation routing has noisy
+measured ratios and does not establish a speedup. The clear rotational query
+costs about 1.68x; rotating bar/ball about 0.93x. Previously missed interior
+crossing costs about 6.02x while changing Separated to Hit.
+
+The same candidate is now integrated privately into the actual 3D library, with
+the unchanged translation route and unchanged 2D code. All 432 native results
+match the prototype's status and fraction exactly, and five existing controls
+pass. Two actual library unit regressions cover first impact and sampled
+projected-acceleration bounds. 3D/f32, 3D/f64 and 2D feature matrices are pending.
+This is not a released engine and is not yet game-qualified.
+
+The cost.rs pre-integration benchmark must be run at its recorded source commit
+d0b5593 to compare the original engine; after native routing both arms would
+call the new library for rotations. Old comparison outputs are retained.
