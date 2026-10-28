@@ -1,0 +1,7 @@
+{
+  "source": "src/query/sweep_toi/sweep_toi.rs",
+  "base": "c566aabd77be8ac7a427c2b704860c47e34657b9",
+  "sourceSha256": "29ea7906d88e10c2853888979cf47df008ab09dd52f4191c58b905736d078479",
+  "copiedModuleSha256": "f9f301befe96dfac9cceac42a19e11fe7bac1e94299feb5d25b46a4e1a1a4ced",
+  "scope": "Exact existing test module, redirected to private candidate through wrapper"
+}

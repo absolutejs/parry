@@ -47,3 +47,13 @@ orientation, COM offsets, quaternion sign, three rotation spans and clipped time
 are covered. The independent oracle explicitly evaluates corner/plane geometry;
 its sampling only brackets the test root and is not used by the candidate. These
 are initial results, not production engine/game qualification or a general proof.
+
+Strict matrix assertions pass: classification, earliest target crossing, bounded
+plane gap, <=25 queries, and exact quaternion-sign invariance. Five unchanged
+upstream sweep controls also pass through a wrapper targeting the private
+candidate. Cost sampling exposes unacceptable unnecessary work for pure
+translation: about 11.25x for the hit control and 5.35x for the miss. Rotating
+bar/ball is about 1.68x; rotating clear is 1.91x. The previously missed interior
+crossing is about 8.90x, comparing different outcomes. These are native shared-host
+measurements, not FPS. Preserve the working translation path and reduce redundant
+projection transforms before considering engine integration.

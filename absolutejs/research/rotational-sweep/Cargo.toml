@@ -16,3 +16,15 @@ path = "probe.rs"
 [[bin]]
 name = "rotational-sweep-matrix"
 path = "matrix.rs"
+
+[features]
+default = ["dim3"]
+dim3 = []
+dim2 = []
+[[test]]
+name = "existing-sweep-controls"
+path = "controls.rs"
+
+[[bin]]
+name = "rotational-sweep-cost"
+path = "cost.rs"

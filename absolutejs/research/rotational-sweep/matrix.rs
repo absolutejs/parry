@@ -36,5 +36,19 @@ fn main(){
   let actual_gap=gap(&moving,b.points(),&floor,candidate.fraction as f64)/scale as f64;
   rows.push(serde_json::json!({"scale":scale,"startAngle":start_angle,"offset":[offset.x,offset.y,offset.z],"rotated":rotated,"reverse":reverse,"clip":clip,"negatedQuaternion":negate,"baselineStatus":format!("{:?}",baseline.status),"candidateStatus":format!("{:?}",candidate.status),"candidateFraction":candidate.fraction,"iterations":iterations,"planeGapAtCandidatePerScale":actual_gap,"oracleTargetFraction":expected}));
  }}}}}}}
+ for row in &rows {
+  let expected=row["oracleTargetFraction"].as_f64();let status=row["candidateStatus"].as_str().unwrap();
+  assert_eq!(status,if expected.is_some(){"Hit"}else{"Separated"},"{row}");
+  assert!(row["iterations"].as_u64().unwrap()<=25);
+  if let Some(first)=expected {
+   let gap=row["planeGapAtCandidatePerScale"].as_f64().unwrap();
+   assert!(gap>=0.00001-2.0*f32::EPSILON as f64&&gap<=0.0000125+2.0*f32::EPSILON as f64,"{row}");
+   assert!(row["candidateFraction"].as_f64().unwrap()<=first+1e-4,"Later root: {row}");
+  }
+ }
+ for pair in rows.chunks_exact(2) {
+  assert_eq!(pair[0]["candidateStatus"],pair[1]["candidateStatus"]);
+  assert_eq!(pair[0]["candidateFraction"],pair[1]["candidateFraction"],"Quaternion sign changed motion");
+ }
  println!("{}",serde_json::to_string_pretty(&serde_json::json!({"scope":"Private candidate against corner-plane oracle; grid used only to bracket test oracle, not by candidate","rows":rows})).unwrap());
 }

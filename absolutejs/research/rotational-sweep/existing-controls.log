@@ -1,0 +1,13 @@
+   Compiling absolutejs-certified-normal-qualification v0.0.0 (/home/alexkahn/alex/parry-rotational-sweep-research/absolutejs/research/rotational-sweep)
+    Finished `release` profile [optimized] target(s) in 4.84s
+     Running controls.rs (.cache/rotational-sweep/release/deps/existing_sweep_controls-db13816fdf37c787)
+
+running 5 tests
+test tests::ball_misses_box ... ok
+test tests::box_vs_box_face_impact ... ok
+test tests::ball_hits_static_box ... ok
+test tests::rotating_bar_hits_ball ... ok
+test tests::overlapped_at_start_returns_fraction_zero ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
