@@ -1,0 +1,13 @@
+   Compiling absolutejs-triangle-contact-qualification v0.0.0 (/home/alexkahn/alex/parry-triangle-contact-research/absolutejs/research/triangle-contact)
+    Finished `release` profile [optimized] target(s) in 14.26s
+     Running heightfield_frames.rs (.cache/research-target/release/deps/heightfield_frames-3bbf3fca1445f211)
+
+running 5 tests
+test after_heightfield_second ... ok
+test after_heightfield_first ... ok
+test before_heightfield_first ... ok
+test before_heightfield_second ... ok
+test frames_survive_old_identity_cache_and_internal_edge_constraints ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

@@ -1,0 +1,79 @@
+     Locking 44 packages to latest compatible versions
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling libm v0.2.16
+   Compiling syn v3.0.9
+   Compiling autocfg v1.5.1
+   Compiling num-traits v0.2.19
+   Compiling serde v1.0.229
+   Compiling serde_derive v1.0.229
+   Compiling bytemuck v1.25.2
+   Compiling safe_arch v1.2.0
+   Compiling wide v1.7.1
+   Compiling approx v0.5.1
+   Compiling num-complex v0.4.6
+   Compiling thiserror v2.0.21
+   Compiling zmij v1.0.23
+   Compiling simba v0.10.2
+   Compiling glam v0.33.12
+   Compiling thiserror-impl v2.0.21
+   Compiling log v0.4.34
+   Compiling serde_json v1.0.154
+   Compiling ena v0.14.4
+   Compiling glamx v0.3.1
+   Compiling serde_arrays v0.2.0
+   Compiling ordered-float v5.5.0
+   Compiling bitflags v2.13.2
+   Compiling num-derive v0.5.1
+   Compiling foldhash v0.2.0
+   Compiling memchr v2.8.3
+   Compiling slab v0.4.12
+   Compiling either v1.19.0
+   Compiling static_assertions v1.1.0
+   Compiling itoa v1.0.18
+   Compiling arrayvec v0.7.8
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d)
+error[E0432]: unresolved import `crate::shape::SharedShape`
+  --> /home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d/../../src/shape/shape.rs:6:5
+   |
+ 6 | use crate::shape::SharedShape;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ no `SharedShape` in `shape`
+   |
+note: found an item that was configured out
+  --> /home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d/../../src/shape/mod.rs:24:19
+   |
+19 | #[cfg(feature = "alloc")]
+   |       ----------------- the item is gated behind the `alloc` feature
+...
+24 |     shared_shape::SharedShape,
+   |                   ^^^^^^^^^^^
+
+warning: unused import: `crate::shape::ShapeType`
+  --> /home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d/../../src/query/default_query_dispatcher.rs:18:5
+   |
+18 | use crate::shape::ShapeType;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: the lint level is defined here
+  --> /home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d/../../src/lib.rs:16:9
+   |
+16 | #![warn(unused_imports)]
+   |         ^^^^^^^^^^^^^^
+
+warning: unused import: `self::shape::DeserializableTypedShape`
+  --> /home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d/../../src/shape/mod.rs:12:16
+   |
+12 | pub(crate) use self::shape::DeserializableTypedShape;
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `self::consts::*`
+  --> /home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d/../../src/utils/mod.rs:28:16
+   |
+28 | pub(crate) use self::consts::*;
+   |                ^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0432`.
+warning: `parry3d` (lib) generated 3 warnings
+error: could not compile `parry3d` (lib) due to 1 previous error; 3 warnings emitted

@@ -1,0 +1,47 @@
+     Locking 6 packages to latest compatible versions
+      Adding byteorder v1.5.0
+      Adding downcast-rs v2.0.2
+      Adding hash32 v0.3.1
+      Adding heapless v0.8.0
+      Adding rstar v0.13.0
+      Adding stable_deref_trait v1.2.1
+   Compiling approx v0.5.1
+   Compiling byteorder v1.5.0
+   Compiling heapless v0.8.0
+   Compiling hash32 v0.3.1
+   Compiling stable_deref_trait v1.2.1
+   Compiling simba v0.10.2
+   Compiling glam v0.33.12
+   Compiling smallvec v1.16.4
+   Compiling rstar v0.13.0
+   Compiling hashbrown v0.17.1
+   Compiling glamx v0.3.1
+   Compiling downcast-rs v2.0.2
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-triangle-contact-research/crates/parry3d)
+   Compiling serde_json v1.0.154
+   Compiling bincode v1.3.3
+   Compiling absolutejs-triangle-contact-qualification v0.0.0 (/home/alexkahn/alex/parry-triangle-contact-research/absolutejs/research/triangle-contact)
+    Finished `release` profile [optimized] target(s) in 1m 22s
+     Running heightfield_frames.rs (.cache/research-target/release/deps/heightfield_frames-3bbf3fca1445f211)
+
+running 4 tests
+test after_heightfield_first ... ok
+test after_heightfield_second ... ok
+test before_heightfield_first ... FAILED
+test before_heightfield_second ... ok
+
+failures:
+
+---- before_heightfield_first stdout ----
+
+thread 'before_heightfield_first' (319) panicked at heightfield_frames.rs:21:3:
+before flipped=false iteration=0: -31.968266 centimetres
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    before_heightfield_first
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test heightfield_frames`

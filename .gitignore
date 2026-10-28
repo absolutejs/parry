@@ -11,3 +11,6 @@ Makefile
 .idea
 .DS_store
 .claude
+
+# Local bounded native research builds
+.cache/

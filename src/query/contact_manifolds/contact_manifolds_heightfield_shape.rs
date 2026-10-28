@@ -122,7 +122,23 @@ pub fn contact_manifolds_heightfield_shape<ManifoldData, ContactData>(
         #[cfg(feature = "dim2")]
         let sub_shape1 = Capsule::new(part1.a, part1.b, 0.0); // TODO: use a segment instead.
         #[cfg(feature = "dim3")]
-        let sub_shape1 = *part1;
+        let sub_shape1 = crate::shape::Triangle::new(
+            crate::math::Vector::ZERO,
+            part1.b - part1.a,
+            part1.c - part1.a,
+        );
+
+        // Contact clipping and closest-feature queries must not lose small gaps
+        // to a large heightfield-local triangle offset. Store the contact frame
+        // explicitly, just like translated compound/voxel subshapes.
+        #[cfg(feature = "dim3")]
+        let local_pos12 = {
+            let mut pose = *pos12;
+            pose.translation -= part1.a;
+            pose
+        };
+        #[cfg(feature = "dim2")]
+        let local_pos12 = *pos12;
 
         let sub_detector = match workspace.sub_detectors.entry(i) {
             Entry::Occupied(entry) => {
@@ -152,6 +168,32 @@ pub fn contact_manifolds_heightfield_shape<ManifoldData, ContactData>(
 
         let manifold = &mut manifolds[sub_detector.manifold_id];
 
+        #[cfg(feature = "dim3")]
+        {
+            let previous_origin = if flipped {
+                manifold.subshape_pos2()
+            } else {
+                manifold.subshape_pos1()
+            }
+            .map(|pose| pose.translation)
+            .unwrap_or_default();
+            let delta = part1.a - previous_origin;
+            // Existing/restored identity-frame contacts need the same conversion
+            // as a moved heightfield cell. Normals and feature IDs are unchanged
+            // by this translation; retain cached per-contact user data.
+            if flipped {
+                for point in &mut manifold.points {
+                    point.local_p2 -= delta;
+                }
+                manifold.set_subshape_pos2(Some(Pose::from_translation(part1.a)));
+            } else {
+                for point in &mut manifold.points {
+                    point.local_p1 -= delta;
+                }
+                manifold.set_subshape_pos1(Some(Pose::from_translation(part1.a)));
+            }
+        }
+
         #[cfg(feature = "dim2")]
         let pseudo_normals = None::<()>;
         #[cfg(feature = "dim3")]
@@ -161,7 +203,7 @@ pub fn contact_manifolds_heightfield_shape<ManifoldData, ContactData>(
 
         if flipped {
             let _ = dispatcher.contact_manifold_convex_convex(
-                &pos12.inverse(),
+                &local_pos12.inverse(),
                 shape2,
                 &sub_shape1,
                 None,
@@ -171,7 +213,7 @@ pub fn contact_manifolds_heightfield_shape<ManifoldData, ContactData>(
             );
         } else {
             let _ = dispatcher.contact_manifold_convex_convex(
-                pos12,
+                &local_pos12,
                 &sub_shape1,
                 shape2,
                 normal_constraints1,
