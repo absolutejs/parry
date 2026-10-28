@@ -1,0 +1,11 @@
+[package]
+name = "parry-inertia-reconstruction-probe"
+version = "0.0.0"
+edition = "2021"
+publish = false
+[workspace]
+[features]
+default = ["std"]
+std = ["parry3d/std", "parry3d/alloc"]
+[dependencies]
+parry3d = { path = "../../crates/parry3d", default-features = false, features = ["required-features", "enhanced-determinism"] }

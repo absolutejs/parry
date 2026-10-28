@@ -82,3 +82,6 @@ macro_rules! regression {
 }
 regression!(single, parry3d);
 regression!(double, parry3d_f64);
+
+#[cfg(test)]
+mod inertia;

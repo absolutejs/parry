@@ -1,0 +1,25 @@
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-inertia-research/crates/parry3d)
+warning: unused import: `MatExt`
+  --> /home/alexkahn/alex/parry-inertia-research/crates/parry3d/../../src/mass_properties/mass_properties.rs:3:19
+   |
+ 3 | use crate::math::{MatExt, Matrix, VectorExt};
+   |                   ^^^^^^
+   |
+note: the lint level is defined here
+  --> /home/alexkahn/alex/parry-inertia-research/crates/parry3d/../../src/lib.rs:16:9
+   |
+16 | #![warn(unused_imports)]
+   |         ^^^^^^^^^^^^^^
+
+warning: `parry3d` (lib) generated 1 warning
+   Compiling parry-inertia-reconstruction-probe v0.0.0 (/home/alexkahn/alex/parry-inertia-research/research/inertia-reconstruction)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.14s
+     Running `.cache/target/debug/parry-inertia-reconstruction-probe`
+units=0.001 count=2 aggregate_relative_error=5.886398e-8 direct_relative_error=1.0195539e-7
+units=0.001 count=3 aggregate_relative_error=1.1981537e-7 direct_relative_error=7.4743184e-8
+units=1 count=2 aggregate_relative_error=2.0471326e-7 direct_relative_error=8.925185e-8
+units=1 count=3 aggregate_relative_error=1.2810037e-7 direct_relative_error=1.3378636e-7
+units=100 count=2 aggregate_relative_error=2.3482605e-7 direct_relative_error=2.3482605e-7
+units=100 count=3 aggregate_relative_error=1.9270253e-7 direct_relative_error=5.690129e-8
+units=10000 count=2 aggregate_relative_error=1.451109e-7 direct_relative_error=1.451109e-7
+units=10000 count=3 aggregate_relative_error=1.4708613e-7 direct_relative_error=1.0293619e-7

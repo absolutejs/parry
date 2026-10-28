@@ -1,0 +1,55 @@
+     Locking 45 packages to latest compatible versions
+   Compiling libm v0.2.16
+   Compiling autocfg v1.5.1
+   Compiling num-traits v0.2.19
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling bytemuck v1.25.2
+   Compiling syn v3.0.9
+   Compiling safe_arch v1.2.0
+   Compiling approx v0.5.1
+   Compiling heapless v0.8.0
+   Compiling serde_core v1.0.229
+   Compiling byteorder v1.5.0
+   Compiling hash32 v0.3.1
+   Compiling wide v1.7.1
+   Compiling num-complex v0.4.6
+   Compiling thiserror v2.0.21
+   Compiling foldhash v0.2.0
+   Compiling stable_deref_trait v1.2.1
+   Compiling hashbrown v0.17.1
+   Compiling thiserror-impl v2.0.21
+   Compiling glam v0.33.12
+   Compiling simba v0.10.2
+   Compiling log v0.4.34
+   Compiling smallvec v1.16.4
+   Compiling equivalent v1.0.3
+   Compiling indexmap v2.14.2
+   Compiling rstar v0.13.0
+   Compiling ena v0.14.4
+   Compiling num-derive v0.5.1
+   Compiling ordered-float v5.5.0
+   Compiling either v1.19.0
+   Compiling glamx v0.3.1
+   Compiling bitflags v2.13.2
+   Compiling arrayvec v0.7.8
+   Compiling slab v0.4.12
+   Compiling downcast-rs v2.0.2
+   Compiling static_assertions v1.1.0
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-inertia-research/crates/parry3d)
+   Compiling parry-inertia-reconstruction-probe v0.0.0 (/home/alexkahn/alex/parry-inertia-research/research/inertia-reconstruction)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 50.41s
+     Running `.cache/target/debug/parry-inertia-reconstruction-probe`
+units=0.001 count=2 aggregate_relative_error=5.274104e-1 direct_relative_error=5.273929e-1
+units=0.001 count=3 aggregate_relative_error=3.7746075e-1 direct_relative_error=2.6920405e-1
+units=1 count=2 aggregate_relative_error=9.0538284e-5 direct_relative_error=9.054851e-5
+units=1 count=3 aggregate_relative_error=5.310771e-5 direct_relative_error=1.2876704e-7
+units=100 count=2 aggregate_relative_error=9.39799e-8 direct_relative_error=9.39799e-8
+units=100 count=3 aggregate_relative_error=5.8801398e-8 direct_relative_error=1.3292012e-7
+units=10000 count=2 aggregate_relative_error=1.0298823e-7 direct_relative_error=1.0298823e-7
+units=10000 count=3 aggregate_relative_error=8.819999e-8 direct_relative_error=8.6278185e-8
+
+thread 'main' (11) panicked at src/main.rs:26:2:
+Inertia reconstruction error 5.274104e-1 exceeds f32 tolerance
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

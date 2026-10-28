@@ -1,9 +1,93 @@
 use crate::math::{AngVector, AngularInertia, Pose, Real, Rotation, Vector};
 #[cfg(feature = "dim3")]
-use crate::math::{MatExt, Matrix, VectorExt};
+use crate::math::{Matrix, VectorExt};
 use crate::utils;
 use core::ops::{Add, AddAssign, Sub, SubAssign};
 use num::Zero;
+
+/// Diagonalize a symmetric inertia tensor with scale-independent rotations.
+/// f64 workspace protects f32 callers during repeated mass-property aggregation.
+#[cfg(feature = "dim3")]
+fn inertia_principal_frame(inertia: Matrix) -> (Vector, Rotation) {
+    let columns = inertia.to_cols_array();
+    let scale = columns
+        .iter()
+        .fold(0.0_f64, |m, &v| m.max((v as f64).abs()));
+    if scale == 0.0 {
+        return (Vector::ZERO, Rotation::IDENTITY);
+    }
+    let mut a = [[0.0_f64; 3]; 3];
+    let mut vectors = [[0.0_f64; 3]; 3];
+    for r in 0..3 {
+        vectors[r][r] = 1.0;
+        for c in 0..3 {
+            a[r][c] = columns[3 * c + r] as f64 / scale;
+        }
+    }
+    // Three-dimensional symmetric Jacobi converges in far fewer rotations for
+    // finite inputs; the bound prevents pathological inputs from looping.
+    for _ in 0..32 {
+        let mut p = 0;
+        let mut q = 1;
+        for (r, c) in [(0, 2), (1, 2)] {
+            if a[r][c].abs() > a[p][q].abs() {
+                p = r;
+                q = c;
+            }
+        }
+        let off = a[p][q];
+        if off.abs() <= 1.0e-15 {
+            break;
+        }
+        let tau = (a[q][q] - a[p][p]) / (2.0 * off);
+        let t =
+            (if tau >= 0.0 { 1.0 } else { -1.0 }) / (tau.abs() + num::Float::sqrt(1.0 + tau * tau));
+        let cosine = 1.0 / num::Float::sqrt(1.0 + t * t);
+        let sine = t * cosine;
+        a[p][p] -= t * off;
+        a[q][q] += t * off;
+        a[p][q] = 0.0;
+        a[q][p] = 0.0;
+        for k in 0..3 {
+            if k != p && k != q {
+                let kp = a[k][p];
+                let kq = a[k][q];
+                a[k][p] = cosine * kp - sine * kq;
+                a[p][k] = a[k][p];
+                a[k][q] = sine * kp + cosine * kq;
+                a[q][k] = a[k][q];
+            }
+            let vp = vectors[k][p];
+            let vq = vectors[k][q];
+            vectors[k][p] = cosine * vp - sine * vq;
+            vectors[k][q] = sine * vp + cosine * vq;
+        }
+    }
+    let mut order = [0, 1, 2];
+    for (i, j) in [(0, 1), (1, 2), (0, 1)] {
+        if a[order[i]][order[i]] > a[order[j]][order[j]] {
+            order.swap(i, j);
+        }
+    }
+    let axis = |i: usize| {
+        Vector::new(
+            vectors[0][order[i]] as Real,
+            vectors[1][order[i]] as Real,
+            vectors[2][order[i]] as Real,
+        )
+    };
+    let mut frame = Matrix::from_cols(axis(0), axis(1), axis(2));
+    if frame.determinant() < 0.0 {
+        frame.z_axis = -frame.z_axis;
+    }
+    // Preserve the existing nonnegative-principal-inertia contract for subtraction.
+    let principal = Vector::new(
+        (a[order[0]][order[0]] * scale).max(0.0) as Real,
+        (a[order[1]][order[1]] * scale).max(0.0) as Real,
+        (a[order[2]][order[2]] * scale).max(0.0) as Real,
+    );
+    (principal, Rotation::from_mat3(&frame).normalize())
+}
 
 #[cfg_attr(feature = "f32", expect(clippy::unnecessary_cast))]
 const EPSILON: Real = f32::EPSILON as Real;
@@ -212,16 +296,11 @@ impl MassProperties {
     /// values and principal inertia frame.
     #[cfg(feature = "dim3")]
     pub fn with_inertia_matrix(local_com: Vector, mass: Real, inertia: Matrix) -> Self {
-        let mut eigen = inertia.symmetric_eigen();
-        if eigen.eigenvectors.determinant() < 0.0 {
-            eigen.eigenvectors.swap_cols(1, 2);
-            eigen.eigenvalues.as_mut().swap(1, 2);
-        }
-        let eigenvectors = eigen.eigenvectors;
-        let principal_inertia_local_frame = Rotation::from_mat3(&eigenvectors).normalize();
-
-        // Drop negative eigenvalues.
-        let principal_inertia = eigen.eigenvalues.map(|e| e.max(0.0));
+        // Scale before diagonalization: fixed absolute thresholds in a cubic
+        // eigensolver can misclassify small, anisotropic tensors as isotropic.
+        // Bounded Jacobi rotations also handle repeated principal moments without
+        // choosing a vector from an ill-conditioned polynomial root.
+        let (principal_inertia, principal_inertia_local_frame) = inertia_principal_frame(inertia);
 
         Self::with_principal_inertia_frame(
             local_com,
@@ -667,14 +746,13 @@ mod test {
             #[cfg(feature = "dim3")]
             inv_principal_inertia: Vector::new(3.0, 2.0, 1.0),
             #[cfg(feature = "dim3")]
-            // TODO: ideally this should be IDENTITY, but glam’s conversion from matrix
-            //       to quaternion returns this instead. This is OK for the cube test
-            //       due to its symmetry though this needs a closer look.
-            principal_inertia_local_frame: Rotation::from_xyzw(1.0, 0.0, 0.0, 0.0),
+            principal_inertia_local_frame: Rotation::IDENTITY,
         };
 
-        assert_eq!(m1 + m2, result);
-        assert_eq!(m2 + m1, result);
+        // Principal axes have arbitrary signs. Compare the physical tensor,
+        // not one eigensolver's choice of quaternion representation.
+        assert_relative_eq!(m1 + m2, result, epsilon = 1.0e-6);
+        assert_relative_eq!(m2 + m1, result, epsilon = 1.0e-6);
     }
 
     #[test]

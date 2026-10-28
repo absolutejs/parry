@@ -1,0 +1,30 @@
+   Compiling parry3d-f64 v0.31.1 (/home/alexkahn/alex/parry-inertia-research/crates/parry3d-f64)
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-inertia-research/crates/parry3d)
+   Compiling absolutejs-parry-witness-regression v0.1.0 (/home/alexkahn/alex/parry-inertia-research/absolutejs/regression)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 26.60s
+     Running unittests src/lib.rs (.cache/target/debug/deps/absolutejs_parry_witness_regression-06d3fa5aa4010532)
+
+running 10 tests
+test double::tetrahedron_reduction_preserves_previous_support_points ... ok
+test double::all_replaced_face_vertices_preserve_previous_simplex ... ok
+test inertia::inertia_f32::zero_diagonal_and_subtraction_preserve_physical_tensor ... ok
+test inertia::inertia_f64::zero_diagonal_and_subtraction_preserve_physical_tensor ... ok
+test single::all_replaced_face_vertices_preserve_previous_simplex ... ok
+test single::tetrahedron_reduction_preserves_previous_support_points ... ok
+inertia_f64 tensor cases=960 maximum_relative_error=3.074989026677907e-15
+test inertia::inertia_f64::tensor_reconstruction_across_scale_rotation_and_repeated_moments ... ok
+inertia_f32 tensor cases=960 maximum_relative_error=9.018596969401685e-7
+test inertia::inertia_f32::tensor_reconstruction_across_scale_rotation_and_repeated_moments ... ok
+inertia_f64 aggregate cases=384 maximum_relative_error=1.5435432071044695e-15
+test inertia::inertia_f64::aggregation_matches_parallel_axis_theorem_for_each_insertion_order ... ok
+inertia_f32 aggregate cases=384 maximum_relative_error=7.425502374783361e-7
+test inertia::inertia_f32::aggregation_matches_parallel_axis_theorem_for_each_insertion_order ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests absolutejs_parry_witness_regression
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

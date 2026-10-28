@@ -1,0 +1,49 @@
+    Checking libm v0.2.16
+    Checking bytemuck v1.25.2
+    Checking safe_arch v1.2.0
+    Checking wide v1.7.1
+    Checking num-traits v0.2.19
+    Checking num-complex v0.4.6
+    Checking approx v0.5.1
+   Compiling thiserror v2.0.21
+    Checking glam v0.33.12
+    Checking serde_core v1.0.229
+    Checking equivalent v1.0.3
+    Checking hashbrown v0.17.1
+    Checking indexmap v2.14.2
+    Checking simba v0.10.2
+    Checking ordered-float v5.5.0
+    Checking log v0.4.34
+    Checking foldhash v0.2.0
+    Checking static_assertions v1.1.0
+    Checking bitflags v2.13.2
+    Checking arrayvec v0.7.8
+    Checking either v1.19.0
+    Checking glamx v0.3.1
+    Checking parry3d v0.31.1 (/home/alexkahn/alex/parry-inertia-research/crates/parry3d)
+warning: constant `K` is never used
+ --> /home/alexkahn/alex/parry-inertia-research/crates/parry3d/../../src/utils/fx_hasher.rs:3:7
+  |
+3 | const K: u32 = 0x9e3779b9;
+  |       ^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `FxHasher32` is never constructed
+ --> /home/alexkahn/alex/parry-inertia-research/crates/parry3d/../../src/utils/fx_hasher.rs:7:12
+  |
+7 | pub struct FxHasher32 {
+  |            ^^^^^^^^^^
+
+warning: method `add_to_hash` is never used
+  --> /home/alexkahn/alex/parry-inertia-research/crates/parry3d/../../src/utils/fx_hasher.rs:20:8
+   |
+18 | impl FxHasher32 {
+   | --------------- method in this implementation
+19 |     #[inline]
+20 |     fn add_to_hash(&mut self, i: u32) {
+   |        ^^^^^^^^^^^
+
+warning: `parry3d` (lib) generated 3 warnings
+    Checking parry-inertia-reconstruction-probe v0.0.0 (/home/alexkahn/alex/parry-inertia-research/research/inertia-reconstruction)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 20.48s
