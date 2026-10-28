@@ -43,3 +43,14 @@ quaternion sign invariance, clipped time, offset COM, translating/rotating pairs
 grazing/no-hit cases, bounded work/cost, native feature configurations, and real
 game captured replay. Composite traversal and one-sided filtering are separate.
 No production integration or release qualification is claimed.
+
+## Tighter curvature and bounded implementation
+
+The optimized candidate uses 8 instead of 14. Write r=|u|. Since
+q'' = -2*q'*(r'/r) - q*|q'|², |r'|<=|d| and |q'|<=|d|/m imply
+|q''|<=3|d|²/m². Substituting into 2|q''|+2|q'|² yields 8|d|²/m².
+No collision tolerance changes. Both projection directions now share each
+vertex's transformed point/velocity. Constant endpoint rotations use the
+unchanged original translation algorithm, so the new bound is only needed when
+at least one orientation changes. The strict 432-case matrix and five existing
+controls still pass. Costs and original slower implementation are retained.

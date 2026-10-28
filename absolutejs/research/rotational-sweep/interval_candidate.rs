@@ -13,24 +13,29 @@ fn curvature(s:&Sweep,p:&ToiProxy)->f64 {
  let(a,b)=endpoints(s);let delta=b-a;let extremum=if delta.length_squared()>0.0{(-a.dot(delta)/delta.length_squared()).clamp(0.0,1.0)}else{0.0};
  let min_norm_sq=(a+delta*extremum).length_squared().next_down();
  let radius=p.points().iter().map(|v|(vec(*v)-vec(s.local_center)).length()).fold(0.0_f64,f64::max);
- // u=q0+t*d, q=u/|u|: |q'|<=|d|/m, |q''|<=6|d|²/m².
- // R(q)v=q*v*q*: |(R(q)v)''|<=14|v||d|²/m².
- (14.0*radius*delta.length_squared()/min_norm_sq).next_up()
+ // u=q0+t*d, q=u/|u|: |q'|<=|d|/m, |q''|<=3|d|²/m².
+ // R(q)v=q*v*q*: |(R(q)v)''|<=8|v||d|²/m².
+ (8.0*radius*delta.length_squared()/min_norm_sq).next_up()
 }
-fn projected(s:&Sweep,p:&ToiProxy,t:Real,n:Vector)->(f64,f64,f64,f64,f64) {
+fn projected_pair(s:&Sweep,p:&ToiProxy,t:Real,axes:[Vector;2])->[(f64,f64,f64,f64,f64);2] {
  let(a,b)=endpoints(s);let d=b-a;let u=a+d*(t as f64);let norm=u.length();let q=u/norm;
  let dq=(d-q*q.dot(d))/norm;let w=dq*q.conjugate();let omega=DVec3::new(w.x,w.y,w.z)*2.0;
- let linear=vec(s.c2)-vec(s.c1);let center=vec(s.c1)+linear*(t as f64);let axis=vec(n).normalize_or_zero();
- let(mut lo,mut hi,mut vlo,mut vhi,mut magnitude)=(f64::MAX,-f64::MAX,f64::MAX,-f64::MAX,0.0_f64);
+ let linear=vec(s.c2)-vec(s.c1);let center=vec(s.c1)+linear*(t as f64);
+ let axes=axes.map(|n|vec(n).normalize_or_zero());
+ let mut values=[(f64::MAX,-f64::MAX,f64::MAX,-f64::MAX,0.0_f64);2];
  for point in p.points() {
   let arm=q*(vec(*point)-vec(s.local_center));let world=center+arm;
-  let projection=world.dot(axis);let velocity=(linear+omega.cross(arm)).dot(axis);
-  lo=lo.min(projection);hi=hi.max(projection);vlo=vlo.min(velocity);vhi=vhi.max(velocity);
-  magnitude=magnitude.max(world.abs().dot(axis.abs()));
+  let velocity=linear+omega.cross(arm);
+  for (v,axis) in values.iter_mut().zip(axes) {
+   let projection=world.dot(axis);let speed=velocity.dot(axis);
+   v.0=v.0.min(projection);v.1=v.1.max(projection);v.2=v.2.min(speed);v.3=v.3.max(speed);v.4=v.4.max(world.abs().dot(axis.abs()));
+  }
  }
- (lo,hi,vlo,vhi,magnitude)
+ values
 }
 pub fn candidate(a:&ToiProxy,sa:&Sweep,b:&ToiProxy,sb:&Sweep,max_fraction:Real,slop:Real)->(SweepToiOutput,u32) {
+ let constant=|s:&Sweep|s.q1==s.q2||s.q1== -s.q2;
+ if constant(sa)&&constant(sb){return(parry3d::query::sweep_toi::sweep_time_of_impact(a,sa,b,sb,max_fraction,slop),0)}
  let origin=sa.c1;let sa=sa.shifted(origin);let sb=sb.shifted(origin);
  let target=slop.max(a.radius+b.radius-slop);let tolerance=0.25*slop;
  let bound=curvature(&sa,a)+curvature(&sb,b);let mut cache=SimplexCache::default();let mut t=0.0;
@@ -41,15 +46,16 @@ pub fn candidate(a:&ToiProxy,sa:&Sweep,b:&ToiProxy,sb:&Sweep,max_fraction:Real,s
   let pa=xa.transform_point(distance.point_a);let pb=xa.transform_point(distance.point_b);
   let witness_n=(pb-pa).normalize_or_zero();
   let gjk_n=xa.rotation*distance.normal;
-  let plane_gap=|n:Vector|{let(_,amax,_,_,_)=projected(&sa,a,t,n);let(bmin,_,_,_,_)=projected(&sb,b,t,n);bmin-amax};
-  let n=if plane_gap(gjk_n)>plane_gap(witness_n){gjk_n}else{witness_n};
+  let axes=[witness_n,gjk_n];
+  let ap=projected_pair(&sa,a,t,axes);let bp=projected_pair(&sb,b,t,axes);
+  let selected=if bp[1].0-ap[1].1>bp[0].0-ap[0].1{1}else{0};let n=axes[selected];
   out.fraction=t;out.point=(pa+pb+(a.radius-b.radius)*n)*0.5+origin;out.normal=n;
   if distance.distance<=0.0 {out.status=if t==0.0{SweepToiStatus::Overlapped}else{SweepToiStatus::Failed};return(out,iteration)}
   if distance.distance<=target+tolerance {out.status=SweepToiStatus::Hit;return(out,iteration)}
   if t==max_fraction {out.status=SweepToiStatus::Separated;return(out,iteration)}
   if n==Vector::ZERO{return(out,iteration)}
-  let(_,amax,_,avmax,amag)=projected(&sa,a,t,n);
-  let(bmin,_,bvmin,_,bmag)=projected(&sb,b,t,n);
+  let(_,amax,_,avmax,amag)=ap[selected];
+  let(bmin,_,bvmin,_,bmag)=bp[selected];
   let roundoff=64.0*f64::EPSILON*(amag+bmag+target as f64);
   let margin=bmin-amax-target as f64-roundoff;
   if margin<=0.0{return(out,iteration)}

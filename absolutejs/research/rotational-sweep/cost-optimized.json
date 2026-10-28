@@ -1,0 +1,420 @@
+{
+  "rows": [
+    {
+      "baselineFraction": 0.3749987483024597,
+      "baselineStatus": "Hit",
+      "candidateFraction": 0.3749987483024597,
+      "candidateQueries": 0,
+      "candidateStatus": "Hit",
+      "queriesPerSample": 1024,
+      "samples": [
+        {
+          "baselineMs": 0.796514,
+          "candidateMs": 0.8340500000000001,
+          "trial": 0,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.970382,
+          "candidateMs": 0.810056,
+          "trial": 1,
+          "warmup": true
+        },
+        {
+          "baselineMs": 1.047261,
+          "candidateMs": 0.799689,
+          "trial": 2,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.865289,
+          "candidateMs": 0.837115,
+          "trial": 3,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.9280510000000001,
+          "candidateMs": 0.80725,
+          "trial": 4,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.4551729999999998,
+          "candidateMs": 0.831654,
+          "trial": 5,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.340821,
+          "candidateMs": 0.8142349999999999,
+          "trial": 6,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.0212940000000001,
+          "candidateMs": 1.199646,
+          "trial": 7,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.298392,
+          "candidateMs": 0.907539,
+          "trial": 8,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.805976,
+          "candidateMs": 0.800258,
+          "trial": 9,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.978731,
+          "candidateMs": 1.296757,
+          "trial": 10,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.4397380000000002,
+          "candidateMs": 1.1116780000000002,
+          "trial": 11,
+          "warmup": false
+        }
+      ],
+      "scene": "translation-hit"
+    },
+    {
+      "baselineFraction": 1.0,
+      "baselineStatus": "Separated",
+      "candidateFraction": 1.0,
+      "candidateQueries": 0,
+      "candidateStatus": "Separated",
+      "queriesPerSample": 1024,
+      "samples": [
+        {
+          "baselineMs": 0.36290999999999995,
+          "candidateMs": 0.36762,
+          "trial": 0,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.365687,
+          "candidateMs": 0.385167,
+          "trial": 1,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.3836,
+          "candidateMs": 0.371457,
+          "trial": 2,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.474347,
+          "candidateMs": 0.37122099999999997,
+          "trial": 3,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.680019,
+          "candidateMs": 0.36713,
+          "trial": 4,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.38826099999999997,
+          "candidateMs": 0.487203,
+          "trial": 5,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.447091,
+          "candidateMs": 0.366599,
+          "trial": 6,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.364443,
+          "candidateMs": 0.36801,
+          "trial": 7,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.37548,
+          "candidateMs": 0.37076299999999995,
+          "trial": 8,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.372438,
+          "candidateMs": 0.419759,
+          "trial": 9,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.386133,
+          "candidateMs": 0.380158,
+          "trial": 10,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.364232,
+          "candidateMs": 0.368802,
+          "trial": 11,
+          "warmup": false
+        }
+      ],
+      "scene": "translation-miss"
+    },
+    {
+      "baselineFraction": 0.43949657678604126,
+      "baselineStatus": "Hit",
+      "candidateFraction": 0.439496248960495,
+      "candidateQueries": 14,
+      "candidateStatus": "Hit",
+      "queriesPerSample": 1024,
+      "samples": [
+        {
+          "baselineMs": 8.430432,
+          "candidateMs": 8.370441,
+          "trial": 0,
+          "warmup": true
+        },
+        {
+          "baselineMs": 5.737196,
+          "candidateMs": 7.311548999999999,
+          "trial": 1,
+          "warmup": true
+        },
+        {
+          "baselineMs": 9.375312000000001,
+          "candidateMs": 6.997026,
+          "trial": 2,
+          "warmup": true
+        },
+        {
+          "baselineMs": 6.730784,
+          "candidateMs": 6.489869,
+          "trial": 3,
+          "warmup": true
+        },
+        {
+          "baselineMs": 6.612502999999999,
+          "candidateMs": 6.238929,
+          "trial": 4,
+          "warmup": false
+        },
+        {
+          "baselineMs": 6.627188,
+          "candidateMs": 6.9441559999999996,
+          "trial": 5,
+          "warmup": false
+        },
+        {
+          "baselineMs": 7.659641,
+          "candidateMs": 6.302048999999999,
+          "trial": 6,
+          "warmup": false
+        },
+        {
+          "baselineMs": 6.861015,
+          "candidateMs": 6.928967999999999,
+          "trial": 7,
+          "warmup": false
+        },
+        {
+          "baselineMs": 7.872738000000001,
+          "candidateMs": 5.783819,
+          "trial": 8,
+          "warmup": false
+        },
+        {
+          "baselineMs": 7.2435909999999994,
+          "candidateMs": 5.428095,
+          "trial": 9,
+          "warmup": false
+        },
+        {
+          "baselineMs": 5.780661,
+          "candidateMs": 5.640127,
+          "trial": 10,
+          "warmup": false
+        },
+        {
+          "baselineMs": 5.554528,
+          "candidateMs": 6.689991999999999,
+          "trial": 11,
+          "warmup": false
+        }
+      ],
+      "scene": "rotating-bar-ball"
+    },
+    {
+      "baselineFraction": 1.0,
+      "baselineStatus": "Separated",
+      "candidateFraction": 0.19162167608737946,
+      "candidateQueries": 6,
+      "candidateStatus": "Hit",
+      "queriesPerSample": 1024,
+      "samples": [
+        {
+          "baselineMs": 0.6844349999999999,
+          "candidateMs": 4.102842,
+          "trial": 0,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.671269,
+          "candidateMs": 4.0099480000000005,
+          "trial": 1,
+          "warmup": true
+        },
+        {
+          "baselineMs": 1.113797,
+          "candidateMs": 4.8695759999999995,
+          "trial": 2,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.759444,
+          "candidateMs": 4.3111950000000006,
+          "trial": 3,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.813552,
+          "candidateMs": 5.6108709999999995,
+          "trial": 4,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.903281,
+          "candidateMs": 5.578919,
+          "trial": 5,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.013068,
+          "candidateMs": 4.8687119999999995,
+          "trial": 6,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.70821,
+          "candidateMs": 4.327203,
+          "trial": 7,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.67443,
+          "candidateMs": 4.059291,
+          "trial": 8,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.6930810000000001,
+          "candidateMs": 4.3566899999999995,
+          "trial": 9,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.685983,
+          "candidateMs": 3.9341890000000004,
+          "trial": 10,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.910559,
+          "candidateMs": 4.80709,
+          "trial": 11,
+          "warmup": false
+        }
+      ],
+      "scene": "rotating-interior-crossing"
+    },
+    {
+      "baselineFraction": 1.0,
+      "baselineStatus": "Separated",
+      "candidateFraction": 1.0,
+      "candidateQueries": 1,
+      "candidateStatus": "Separated",
+      "queriesPerSample": 1024,
+      "samples": [
+        {
+          "baselineMs": 0.6861229999999999,
+          "candidateMs": 1.312653,
+          "trial": 0,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.941933,
+          "candidateMs": 1.3995360000000001,
+          "trial": 1,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.881147,
+          "candidateMs": 1.197501,
+          "trial": 2,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.64257,
+          "candidateMs": 0.959935,
+          "trial": 3,
+          "warmup": true
+        },
+        {
+          "baselineMs": 0.6451169999999999,
+          "candidateMs": 1.0101559999999998,
+          "trial": 4,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.755727,
+          "candidateMs": 1.143538,
+          "trial": 5,
+          "warmup": false
+        },
+        {
+          "baselineMs": 1.5341980000000002,
+          "candidateMs": 1.2547249999999999,
+          "trial": 6,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.872943,
+          "candidateMs": 1.584626,
+          "trial": 7,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.7104560000000001,
+          "candidateMs": 1.205965,
+          "trial": 8,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.6430309999999999,
+          "candidateMs": 0.9607380000000001,
+          "trial": 9,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.642944,
+          "candidateMs": 1.56635,
+          "trial": 10,
+          "warmup": false
+        },
+        {
+          "baselineMs": 0.684265,
+          "candidateMs": 1.0460260000000001,
+          "trial": 11,
+          "warmup": false
+        }
+      ],
+      "scene": "rotating-clear"
+    }
+  ],
+  "scope": "Private candidate native CPU samples, alternating order, four warmups/eight measured pairs; not browser FPS; baseline misses interior-crossing fixture"
+}
