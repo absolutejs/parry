@@ -6,6 +6,8 @@
 use super::sweep::Sweep;
 use super::sweep_toi::{sweep_time_of_impact, SweepToiOutput, SweepToiStatus};
 use super::toi_proxy::ToiProxy;
+#[cfg(feature = "dim3")]
+use crate::bounding_volume::Aabb;
 use crate::bounding_volume::BoundingVolume;
 use crate::math::{Pose, Real, Vector};
 use crate::shape::{Shape, TypedShape};
@@ -41,6 +43,8 @@ struct CompositeToiContext<'a, 'b> {
     one_sided: bool,
     #[cfg_attr(feature = "dim2", allow(dead_code))]
     target_is_sensor: bool,
+    #[cfg(feature = "dim3")]
+    swept_bounds: Aabb,
     linear_slop: Real,
     max_fraction: Real,
     best: Option<SweepToiOutput>,
@@ -121,23 +125,65 @@ impl CompositeToiContext<'_, '_> {
             .cross(triangle.c - triangle.a)
             .normalize_or_zero();
         let offset1 = n.dot(self.local_centroid1 - triangle.a);
-        let offset2 = n.dot(self.local_centroid2 - triangle.a);
 
         if offset1 < 0.0 {
             // Started behind.
             return true;
         }
 
-        if !self.target_is_sensor
-            && offset1 - offset2 < self.fallback_radius
-            && offset2 > self.fallback_radius
-        {
-            // Finished in front.
+        // A centroid/minimum-radius test does not bound an elongated shape's
+        // rotating tips. Only skip when its entire swept bound stays in front.
+        let corner = Vector::new(
+            if n.x >= 0.0 {
+                self.swept_bounds.mins.x
+            } else {
+                self.swept_bounds.maxs.x
+            },
+            if n.y >= 0.0 {
+                self.swept_bounds.mins.y
+            } else {
+                self.swept_bounds.maxs.y
+            },
+            if n.z >= 0.0 {
+                self.swept_bounds.mins.z
+            } else {
+                self.swept_bounds.maxs.z
+            },
+        );
+        if !self.target_is_sensor && n.dot(corner - triangle.a) > 0.0 {
             return true;
         }
 
         false
     }
+}
+
+/// Bounds the full nlerp arc, not just its endpoint boxes. With unit
+/// quaternions, every point's rotational displacement is at most
+/// `2 * radius * min(|q1-q2|, |q1+q2|)` along the shortest arc. The COM follows
+/// a line, so sweeping the start-oriented box along that line and expanding by
+/// this bound encloses the whole motion. Proxy inflation is rotation-invariant.
+#[cfg(feature = "dim3")]
+fn swept_proxy_aabb(proxy: &ToiProxy, sweep: &Sweep, max_fraction: Real) -> Aabb {
+    let start = sweep.transform_at(0.0);
+    let end = sweep.transform_at(max_fraction);
+    let start_box = proxy.compute_aabb(&start);
+    let translation = sweep.c1.lerp(sweep.c2, max_fraction) - sweep.c1;
+    let translated_box = Aabb::new(start_box.mins + translation, start_box.maxs + translation);
+    let radius = proxy
+        .points()
+        .iter()
+        .map(|point| (*point - sweep.local_center).length())
+        .fold(0.0 as Real, Real::max);
+    let delta = (start.rotation - end.rotation)
+        .length()
+        .min((start.rotation + end.rotation).length());
+    let angular_bound = if delta == 0.0 {
+        0.0
+    } else {
+        (2.0 * radius * delta).next_up()
+    };
+    start_box.merged(&translated_box).loosened(angular_bound)
 }
 
 /// Computes the time of impact between a stationary composite shape and a moving convex
@@ -172,13 +218,20 @@ pub fn sweep_time_of_impact_composite(
     };
 
     // Swept bounds of the fast shape, in the composite’s local frame.
-    let start_aabb = fast.proxy.compute_aabb(&fast.sweep.transform_at(0.0));
-    let end_aabb = fast
-        .proxy
-        .compute_aabb(&fast.sweep.transform_at(max_fraction));
-    let local_aabb = start_aabb
-        .merged(&end_aabb)
-        .transform_by(&composite_pose.inverse());
+    #[cfg(feature = "dim2")]
+    let local_aabb = {
+        let start_aabb = fast.proxy.compute_aabb(&fast.sweep.transform_at(0.0));
+        let end_aabb = fast
+            .proxy
+            .compute_aabb(&fast.sweep.transform_at(max_fraction));
+        start_aabb
+            .merged(&end_aabb)
+            .transform_by(&composite_pose.inverse())
+    };
+    #[cfg(feature = "dim3")]
+    let local_aabb = swept_proxy_aabb(fast.proxy, fast.sweep, max_fraction)
+        .transform_by(&composite_pose.inverse())
+        .loosened(linear_slop);
 
     // Centroid of the fast shape at the sweep endpoints, in the composite’s local frame.
     let centroid_world1 = fast
@@ -197,6 +250,8 @@ pub fn sweep_time_of_impact_composite(
         fallback_radius,
         one_sided,
         target_is_sensor,
+        #[cfg(feature = "dim3")]
+        swept_bounds: local_aabb,
         linear_slop,
         max_fraction,
         best: None,
@@ -293,4 +348,119 @@ pub fn sweep_time_of_impact_composite(
         point: Vector::ZERO,
         normal: Vector::ZERO,
     }))
+}
+
+#[cfg(all(test, feature = "dim3"))]
+mod rotating_bounds_tests {
+    use super::*;
+    use crate::{
+        math::Rotation,
+        shape::{Cuboid, HeightField},
+        utils::Array2,
+    };
+
+    #[test]
+    fn stationary_centroid_does_not_hide_a_rotating_tip() {
+        let floor = HeightField::new(Array2::repeat(3, 3, 0.0), Vector::new(10.0, 1.0, 10.0));
+        let bar = Cuboid::new(Vector::new(2.0, 0.01, 0.1));
+        let proxy = ToiProxy::from_shape(&bar).unwrap();
+        let start = Pose::translation(0.0, 1.0, 0.0);
+        let angle = (40.0 as Real).to_radians();
+        let end = Pose::from_parts(start.translation, Rotation::from_rotation_z(angle));
+        assert!(1.0 - bar.half_extents.y > 0.0);
+        assert!(1.0 - 2.0 * angle.sin() - 0.01 * angle.cos() < 0.0);
+        let sweep = Sweep::from_poses(&start, &end, Vector::ZERO);
+        let fast = SweepCompositeFastShape {
+            proxy: &proxy,
+            sweep: &sweep,
+            local_centroid: Vector::ZERO,
+            min_extent: bar.ccd_thickness(),
+        };
+        for one_sided in [false, true] {
+            let hit = sweep_time_of_impact_composite(
+                &floor,
+                &Pose::IDENTITY,
+                fast,
+                one_sided,
+                false,
+                1.0,
+                0.0001,
+            )
+            .unwrap();
+            assert_eq!(hit.status, SweepToiStatus::Hit, "{hit:?}");
+            assert!(hit.fraction > 0.0 && hit.fraction < 1.0);
+            let clipped = sweep_time_of_impact_composite(
+                &floor,
+                &Pose::IDENTITY,
+                fast,
+                one_sided,
+                false,
+                0.3,
+                0.0001,
+            )
+            .unwrap();
+            assert_eq!(clipped.status, SweepToiStatus::Separated);
+        }
+    }
+
+    #[test]
+    fn swept_bounds_contain_off_center_rotational_arcs() {
+        let points = [Vector::new(-2.0, -0.01, -0.1), Vector::new(2.0, 0.01, 0.1)];
+        let proxy = ToiProxy::from_points(&points, 0.02);
+        for axis in [
+            Vector::X,
+            Vector::Y,
+            Vector::Z,
+            Vector::new(1.0, 2.0, -3.0).normalize(),
+        ] {
+            for angle in [0.0, 0.001, 0.1, 1.0, 3.0] {
+                for local_center in [Vector::ZERO, Vector::new(4.0, -3.0, 2.0)] {
+                    let start = Pose::from_parts(
+                        Vector::new(10.0, -4.0, 3.0),
+                        Rotation::from_axis_angle(axis, 0.7),
+                    );
+                    let end = Pose::from_parts(
+                        Vector::new(10.5, -3.8, 2.7),
+                        Rotation::from_axis_angle(axis, 0.7 + angle),
+                    );
+                    let sweep = Sweep::from_poses(&start, &end, local_center);
+                    for fraction in [0.1, 0.5, 1.0] {
+                        let bounds = swept_proxy_aabb(&proxy, &sweep, fraction);
+                        for sample in 0..=100 {
+                            let actual = proxy.compute_aabb(
+                                &sweep.transform_at(fraction * sample as Real / 100.0),
+                            );
+                            // Rounding allowance only for evaluating the independent sampled boxes.
+                            assert!(bounds
+                                .loosened(32.0 * Real::EPSILON * 16.0)
+                                .contains(&actual));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn translation_only_bounds_remain_tight() {
+        let proxy = ToiProxy::from_array(
+            [Vector::new(-2.0, -0.01, 0.0), Vector::new(2.0, 0.01, 0.0)],
+            0.1,
+        );
+        let sweep = Sweep::from_poses(
+            &Pose::IDENTITY,
+            &Pose::translation(3.0, -4.0, 2.0),
+            Vector::ZERO,
+        );
+        let bounds = swept_proxy_aabb(&proxy, &sweep, 1.0);
+        let endpoints = proxy
+            .compute_aabb(&sweep.transform_at(0.0))
+            .merged(&proxy.compute_aabb(&sweep.transform_at(1.0)));
+        // Adding the proxy radius before/after translation can round differently.
+        // Require containment and tightness within only that arithmetic allowance.
+        let rounding = 8.0 * Real::EPSILON;
+        assert!(bounds.loosened(rounding).contains(&endpoints));
+        assert!((bounds.mins - endpoints.mins).abs().max_element() <= rounding);
+        assert!((bounds.maxs - endpoints.maxs).abs().max_element() <= rounding);
+    }
 }

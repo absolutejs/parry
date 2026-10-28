@@ -4,10 +4,12 @@ The upstream workspace resolves unavailable optional/example dependencies before
 closure and only the library tests' used dev dependency (oorandom).
 """
 from pathlib import Path
-import tomllib,json,hashlib
+import tomllib,json,hashlib,sys
 root=Path(__file__).resolve().parents[3]
 workspace=tomllib.loads((root/'Cargo.toml').read_text())['workspace']
-crate=tomllib.loads((root/'crates/parry3d/Cargo.toml').read_text())
+crate_name=sys.argv[1] if len(sys.argv)>1 else 'parry3d'
+assert crate_name in ('parry3d','parry2d','parry3d-f64','parry2d-f64')
+crate=tomllib.loads((root/'crates'/crate_name/'Cargo.toml').read_text())
 features=crate['features']; enabled=set(); active=set(); pending=['required-features','std','alloc','serde-serialize']
 while pending:
  f=pending.pop()
@@ -29,14 +31,14 @@ for name,d in crate['dependencies'].items():
   else:v[k]=x
  deps[name]=v
 selected={k:[x for x in v if '/' not in x or x.split('/')[0].removesuffix('?') in deps] if k in enabled else [] for k,v in features.items()}
-selected.update({'dim2':[], 'f64':[]})
+for inactive in ('dim2','dim3','f32','f64'):selected.setdefault(inactive,[])
 for key in ['std','alloc','serde-serialize','required-features']:assert key in enabled
-out={'workspace':{},'package':{'name':'parry3d','version':workspace['package']['version'],'edition':workspace['package']['edition'],'publish':False},'lib':{'name':'parry3d','path':'../../../../src/lib.rs'},'features':selected,'dependencies':deps,'dev-dependencies':{'oorandom':workspace['dependencies']['oorandom']}}
+out={'workspace':{},'package':{'name':crate_name,'version':workspace['package']['version'],'edition':workspace['package']['edition'],'publish':False},'lib':{'name':crate['lib']['name'],'path':'../../../../src/lib.rs'},'features':selected,'dependencies':deps,'dev-dependencies':{'oorandom':workspace['dependencies']['oorandom']}}
 def value(v):
  if isinstance(v,dict):return '{'+','.join(json.dumps(k)+'='+value(x) for k,x in v.items())+'}'
  if isinstance(v,list):return '['+','.join(value(x) for x in v)+']'
  return json.dumps(v)
-folder=Path(__file__).parent/'library';folder.mkdir(exist_ok=True)
+folder=Path(__file__).parent/('library' if crate_name=='parry3d' else 'library-'+crate_name);folder.mkdir(exist_ok=True)
 text='\n'.join('['+table+']\n'+'\n'.join(json.dumps(k)+'='+value(v) for k,v in data.items()) for table,data in out.items())+'\n'
 assert tomllib.loads(text)==out
 (folder/'Cargo.toml').write_text(text)

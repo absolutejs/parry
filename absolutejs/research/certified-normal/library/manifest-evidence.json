@@ -240,7 +240,7 @@
     "src/query/split/split_aabb.rs": "f068d35dbc6b2d7c23dcc47b8a53847b96411929c7b4bd24e4676c854640772f",
     "src/query/split/split_segment.rs": "574e2dd97c47dad053458111f0bc88691aa75be99a66dd518c652198a7ecb015",
     "src/query/split/split_trimesh.rs": "121523a73456ec6083174648597e1ac505607d80ef728f3759a2fc02b8e3ff8e",
-    "src/query/sweep_toi/composite.rs": "3e3409312033041c3e964702e6018926825b105d5b7bf5339bb89b10a885159d",
+    "src/query/sweep_toi/composite.rs": "256416f9d5f78fdee9205ad3c9deff0bab67c8a57e5fcefb7420be28a71c855f",
     "src/query/sweep_toi/mod.rs": "73e88642841c7d65faacfdfca4dc4c1358eb4320dbdba7ca1e4b5c4b8eee6611",
     "src/query/sweep_toi/proxy_distance.rs": "0a70a90c80d0e71ccbc0d3a32820401b34ed0405ff0812c578385cda248aeb3a",
     "src/query/sweep_toi/separation.rs": "909984d4ee074be059f9b87d39dcedb3e69325dddab65c21f4c3df84e2a74560",

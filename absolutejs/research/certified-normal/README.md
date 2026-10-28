@@ -52,3 +52,24 @@ negative (~0.68/0.79 mm): this fixture uses the existing tolerance-based touchin
 classification, **not** an exact separating-axis certificate. The change makes
 the returned direction match the bound used by that classification; it does
 not replace the existing tolerance or claim exact closest distances.
+
+## First WASM candidate blocked; CCD correction under qualification
+
+The normal-only private WASM passes all 227 package tests and fixes the exact
+old-snapshot false-contact replay, but the real-tree comparison still rejects
+variant 0 at 960/1920 Hz. Its audited archive and full results are retained in
+the game's research/certified-normal-qualification branch; it is not releasable.
+
+A separate proven one-sided CCD filter error now has a private correction in
+this branch: conservative whole-shape rotational bounds replace the centroid /
+minimum-radius front-side early-out. The shape's actual COM and requested
+fraction are respected, with no heap allocation. The existing 2D filter,
+started-behind behavior and initial-overlap fallback remain unchanged. All 86
+3D/f32 library tests pass, including the prior false miss and 12,120 sampled
+bounds. See [derivation](ccd-bound.md). Cross-dimension/precision and whole-game
+qualification remain required; do not claim this causes or solves the tree sink
+until the captured game states and comparisons establish that.
+
+The conservative CCD candidate now passes all four dimensional/numeric library
+builds. See [bound and qualification](ccd-bound.md); whole-game acceptance is
+still pending. Failed exact-equality evidence remains explicitly retained.
