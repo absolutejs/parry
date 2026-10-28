@@ -24,3 +24,10 @@ Baseline completes on published source: all six full-interval scale/order cases
 report Separated despite an analytically intersecting midpoint. All six clipped
 clear controls report Separated as expected. Complete numeric inputs/results are
 in baseline.json; compilation used one Cargo job and no GPU.
+
+The first private interval candidate (not library code) replaces endpoint
+separation inference with a quadratic bound on fixed-plane separation. It uses
+normalized quaternion derivative/curvature and each proxy's radius about its
+center of mass, with a 25-query cap. Its initial witness-derived plane is too
+weak: all 12 cases return Failed, including clear controls. This is explicitly
+rejected, not a fix. Exact source and result are retained before refinement.

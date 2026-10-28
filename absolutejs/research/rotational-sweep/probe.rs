@@ -1,3 +1,4 @@
+mod interval_candidate;
 use parry3d::{math::{Pose, Rotation, Vector}, query::sweep_toi::{sweep_time_of_impact, Sweep, ToiProxy}, shape::{Cuboid, Shape, Triangle}};
 fn main() {
  let mut rows=Vec::new();
@@ -10,11 +11,12 @@ fn main() {
   let fixed=Sweep::constant(&Pose::IDENTITY,Vector::ZERO);
   let a=ToiProxy::from_shape(&triangle).unwrap(); let b=ToiProxy::from_shape(&bar).unwrap();
   let result=if reverse{sweep_time_of_impact(&b,&moving,&a,&fixed,clip,0.00001*scale)}else{sweep_time_of_impact(&a,&fixed,&b,&moving,clip,0.00001*scale)};
+  let (candidate,iterations)=if reverse{interval_candidate::candidate(&b,&moving,&a,&fixed,clip,0.00001*scale)}else{interval_candidate::candidate(&a,&fixed,&b,&moving,clip,0.00001*scale)};
   let start_gap=bar.compute_aabb(&start).mins.y/scale;
   let end_gap=bar.compute_aabb(&end).mins.y/scale;
   let middle_gap=bar.compute_aabb(&moving.transform_at(0.5)).mins.y/scale;
   assert!(start_gap>0.0&&end_gap>0.0&&middle_gap<0.0);
-  rows.push(serde_json::json!({"scale":scale,"reverse":reverse,"clip":clip,"status":format!("{:?}",result.status),"fraction":result.fraction,"startPlaneGap":start_gap,"endPlaneGap":end_gap,"middlePlaneGap":middle_gap,"expected":if clip==1.0{"Hit"}else{"Separated"}}));
+  rows.push(serde_json::json!({"scale":scale,"reverse":reverse,"clip":clip,"status":format!("{:?}",result.status),"fraction":result.fraction,"startPlaneGap":start_gap,"endPlaneGap":end_gap,"middlePlaneGap":middle_gap,"candidateStatus":format!("{:?}",candidate.status),"candidateFraction":candidate.fraction,"candidateIterations":iterations,"expected":if clip==1.0{"Hit"}else{"Separated"}}));
  }}}
  println!("{}",serde_json::to_string_pretty(&serde_json::json!({"scope":"Direct sweep, stationary triangle, rotating thin box; actual endpoint-interpolated motion; no composite traversal","rows":rows})).unwrap());
 }
