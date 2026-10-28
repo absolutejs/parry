@@ -1,0 +1,137 @@
+{
+  "rows": [
+    {
+      "clip": 0.10000000149011612,
+      "endPlaneGap": 0.0016886740922927856,
+      "expected": "Separated",
+      "fraction": 0.10000000149011612,
+      "middlePlaneGap": -0.0009998679161071777,
+      "reverse": false,
+      "scale": 0.009999999776482582,
+      "startPlaneGap": 0.0016884878277778625,
+      "status": "Separated"
+    },
+    {
+      "clip": 1.0,
+      "endPlaneGap": 0.0016886740922927856,
+      "expected": "Hit",
+      "fraction": 1.0,
+      "middlePlaneGap": -0.0009998679161071777,
+      "reverse": false,
+      "scale": 0.009999999776482582,
+      "startPlaneGap": 0.0016884878277778625,
+      "status": "Separated"
+    },
+    {
+      "clip": 0.10000000149011612,
+      "endPlaneGap": 0.0016886740922927856,
+      "expected": "Separated",
+      "fraction": 0.10000000149011612,
+      "middlePlaneGap": -0.0009998679161071777,
+      "reverse": true,
+      "scale": 0.009999999776482582,
+      "startPlaneGap": 0.0016884878277778625,
+      "status": "Separated"
+    },
+    {
+      "clip": 1.0,
+      "endPlaneGap": 0.0016886740922927856,
+      "expected": "Hit",
+      "fraction": 1.0,
+      "middlePlaneGap": -0.0009998679161071777,
+      "reverse": true,
+      "scale": 0.009999999776482582,
+      "startPlaneGap": 0.0016884878277778625,
+      "status": "Separated"
+    },
+    {
+      "clip": 0.10000000149011612,
+      "endPlaneGap": 0.0016887187957763672,
+      "expected": "Separated",
+      "fraction": 0.10000000149011612,
+      "middlePlaneGap": -0.0009999275207519531,
+      "reverse": false,
+      "scale": 1.0,
+      "startPlaneGap": 0.0016884803771972656,
+      "status": "Separated"
+    },
+    {
+      "clip": 1.0,
+      "endPlaneGap": 0.0016887187957763672,
+      "expected": "Hit",
+      "fraction": 1.0,
+      "middlePlaneGap": -0.0009999275207519531,
+      "reverse": false,
+      "scale": 1.0,
+      "startPlaneGap": 0.0016884803771972656,
+      "status": "Separated"
+    },
+    {
+      "clip": 0.10000000149011612,
+      "endPlaneGap": 0.0016887187957763672,
+      "expected": "Separated",
+      "fraction": 0.10000000149011612,
+      "middlePlaneGap": -0.0009999275207519531,
+      "reverse": true,
+      "scale": 1.0,
+      "startPlaneGap": 0.0016884803771972656,
+      "status": "Separated"
+    },
+    {
+      "clip": 1.0,
+      "endPlaneGap": 0.0016887187957763672,
+      "expected": "Hit",
+      "fraction": 1.0,
+      "middlePlaneGap": -0.0009999275207519531,
+      "reverse": true,
+      "scale": 1.0,
+      "startPlaneGap": 0.0016884803771972656,
+      "status": "Separated"
+    },
+    {
+      "clip": 0.10000000149011612,
+      "endPlaneGap": 0.0016886901576071978,
+      "expected": "Separated",
+      "fraction": 0.10000000149011612,
+      "middlePlaneGap": -0.0009999084286391735,
+      "reverse": false,
+      "scale": 100.0,
+      "startPlaneGap": 0.0016883850330486894,
+      "status": "Separated"
+    },
+    {
+      "clip": 1.0,
+      "endPlaneGap": 0.0016886901576071978,
+      "expected": "Hit",
+      "fraction": 1.0,
+      "middlePlaneGap": -0.0009999084286391735,
+      "reverse": false,
+      "scale": 100.0,
+      "startPlaneGap": 0.0016883850330486894,
+      "status": "Separated"
+    },
+    {
+      "clip": 0.10000000149011612,
+      "endPlaneGap": 0.0016886901576071978,
+      "expected": "Separated",
+      "fraction": 0.10000000149011612,
+      "middlePlaneGap": -0.0009999084286391735,
+      "reverse": true,
+      "scale": 100.0,
+      "startPlaneGap": 0.0016883850330486894,
+      "status": "Separated"
+    },
+    {
+      "clip": 1.0,
+      "endPlaneGap": 0.0016886901576071978,
+      "expected": "Hit",
+      "fraction": 1.0,
+      "middlePlaneGap": -0.0009999084286391735,
+      "reverse": true,
+      "scale": 100.0,
+      "startPlaneGap": 0.0016883850330486894,
+      "status": "Separated"
+    }
+  ],
+  "scope": "Direct sweep, stationary triangle, rotating thin box; actual endpoint-interpolated motion; no composite traversal"
+}

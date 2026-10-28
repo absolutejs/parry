@@ -1,0 +1,26 @@
+# Rotational sweep interval investigation
+
+Base is published Parry c566aabd, independent of the blocked triangle-frame,
+GJK-normal and composite-CCD candidates. Scope is the direct convex sweep.
+A thin box rotates from 87 to 93 degrees about Z, with its center 1.999 above
+a horizontal triangle and half-length 2. Both endpoints are clear; its midpoint
+crosses the plane. Endpoint separation alone cannot certify the swept interval.
+
+The baseline probe covers three scales, both shape orders and clipped/full
+intervals. It reports expected versus observed status without disguising failed
+baseline behavior as a passing regression. No source correction or release is
+claimed. The existing game penetration issue is not yet proven to come from this
+miss; keep its paired replay and acceptance gates separate.
+
+Candidate direction: certify each skipped interval against a fixed separating
+plane using relative translation and an angular displacement bound about each
+center of mass. Normalized quaternion interpolation is not constant angular
+speed, and offset centers must be included. Merely sampling more poses cannot
+certify the interval. Preserve bounded query work and explicit failure reporting;
+then test earliest impact, grazing/no-hit controls, shape-order symmetry, scales,
+clipped intervals, offsets and query cost before any game qualification.
+
+Baseline completes on published source: all six full-interval scale/order cases
+report Separated despite an analytically intersecting midpoint. All six clipped
+clear controls report Separated as expected. Complete numeric inputs/results are
+in baseline.json; compilation used one Cargo job and no GPU.
