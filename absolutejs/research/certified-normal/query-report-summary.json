@@ -1,16 +1,17 @@
 {
-  "scope": "Measured consistency, not an exact-distance proof; touching classification retains the existing scaled tolerance and can have a negative support gap",
+  "scope": "Summarize measured query consistency; this is not an exact-distance proof. Touching retains the existing scaled tolerance and can have a negative support gap. Angles normalize both recorded f32 vectors in f64.",
+  "inputSha256": "275d553abb6f9e0e1a5cedbdb08c0e51c5d8d5a98721326514fe2c4a0502c2c2",
   "rows": [
     {
       "state": "before",
-      "faceNormalAngleDegrees": 0.04141232229273034,
+      "faceNormalAngleDegrees": 0.043639702022319496,
       "minimumReportedDistanceMillimetres": -2.4265736442430352e-06,
       "maximumWitnessProjectionMismatchMillimetres": 0.00027105212211608887,
       "supportPlaneGapMillimetres": -0.6790858507156372
     },
     {
       "state": "after",
-      "faceNormalAngleDegrees": 0.037991474074555255,
+      "faceNormalAngleDegrees": 0.047021364199619206,
       "minimumReportedDistanceMillimetres": -0.059086582623422146,
       "maximumWitnessProjectionMismatchMillimetres": 0.0001004338264465332,
       "supportPlaneGapMillimetres": -0.7908758521080017
