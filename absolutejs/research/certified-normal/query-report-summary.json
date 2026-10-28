@@ -1,0 +1,19 @@
+{
+  "scope": "Measured consistency, not an exact-distance proof; touching classification retains the existing scaled tolerance and can have a negative support gap",
+  "rows": [
+    {
+      "state": "before",
+      "faceNormalAngleDegrees": 0.04141232229273034,
+      "minimumReportedDistanceMillimetres": -2.4265736442430352e-06,
+      "maximumWitnessProjectionMismatchMillimetres": 0.00027105212211608887,
+      "supportPlaneGapMillimetres": -0.6790858507156372
+    },
+    {
+      "state": "after",
+      "faceNormalAngleDegrees": 0.037991474074555255,
+      "minimumReportedDistanceMillimetres": -0.059086582623422146,
+      "maximumWitnessProjectionMismatchMillimetres": 0.0001004338264465332,
+      "supportPlaneGapMillimetres": -0.7908758521080017
+    }
+  ]
+}

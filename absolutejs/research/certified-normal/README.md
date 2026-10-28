@@ -43,3 +43,12 @@ The test module now imports Vec and explicitly discards those return values;
 its assertions and runtime library logic are unchanged. Failed compile logs
 are retained. The log named `library-tests-import-corrected.log` still failed
 because the first edit targeted the wrong module name; it is not passing evidence.
+
+After the existing test-only compile fixes, all 83 library unit tests pass.
+The standalone unshifted query report removes the 319 mm false depth and
+returns normals close to the triangle face. Witness projection discrepancies
+remain at floating-point scale. The selected support-plane gaps are still
+negative (~0.68/0.79 mm): this fixture uses the existing tolerance-based touching
+classification, **not** an exact separating-axis certificate. The change makes
+the returned direction match the bound used by that classification; it does
+not replace the existing tolerance or claim exact closest distances.

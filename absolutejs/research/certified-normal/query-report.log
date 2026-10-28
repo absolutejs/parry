@@ -1,0 +1,4 @@
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-certified-normal-research/crates/parry3d)
+   Compiling absolutejs-certified-normal-qualification v0.0.0 (/home/alexkahn/alex/parry-certified-normal-research/absolutejs/research/certified-normal)
+    Finished `release` profile [optimized] target(s) in 1m 04s
+     Running `.cache/research-target/release/certified-normal-query-report absolutejs/research/certified-normal/query-report.json`
