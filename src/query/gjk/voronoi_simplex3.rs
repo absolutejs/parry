@@ -348,6 +348,7 @@ impl VoronoiSimplex {
 
 #[cfg(test)]
 mod witness_regression_tests {
+    use alloc::vec::Vec;
     use crate::math::{Real, Vector};
     #[test]
     fn all_replaced_face_vertices_preserve_previous_simplex() {
@@ -360,10 +361,10 @@ mod witness_regression_tests {
             ];
             let mut simplex = VoronoiSimplex::new();
             simplex.reset(CsoPoint::single_point(vertices[0]));
-            simplex.project_origin_and_reduce();
+            let _ = simplex.project_origin_and_reduce();
             for point in &vertices[1..] {
                 assert!(simplex.add_point(CsoPoint::single_point(*point)));
-                simplex.project_origin_and_reduce();
+                let _ = simplex.project_origin_and_reduce();
             }
             assert_eq!(simplex.dimension(), 2);
             let previous = (0..3)
@@ -372,7 +373,7 @@ mod witness_regression_tests {
             let mut replacement = vertices[replaced];
             replacement.y = 0.5;
             assert!(simplex.add_point(CsoPoint::single_point(replacement)));
-            simplex.project_origin_and_reduce();
+            let _ = simplex.project_origin_and_reduce();
             assert_eq!(simplex.dimension(), 2);
             for (i, (point, weight)) in previous.into_iter().enumerate() {
                 assert_eq!(
@@ -396,17 +397,17 @@ mod witness_regression_tests {
         .map(|p| CsoPoint::single_point(Vector::new(p[0] as Real, p[1] as Real, p[2] as Real)));
         let mut simplex = VoronoiSimplex::new();
         simplex.reset(points[0]);
-        simplex.project_origin_and_reduce();
+        let _ = simplex.project_origin_and_reduce();
         for point in &points[1..3] {
             assert!(simplex.add_point(*point));
-            simplex.project_origin_and_reduce();
+            let _ = simplex.project_origin_and_reduce();
         }
         assert_eq!(simplex.dimension(), 2);
         let previous = (0..=simplex.dimension())
             .map(|i| (*simplex.point(i), simplex.proj_coord(i)))
             .collect::<Vec<_>>();
         assert!(simplex.add_point(points[3]));
-        simplex.project_origin_and_reduce();
+        let _ = simplex.project_origin_and_reduce();
         assert_eq!(simplex.dimension(), 2);
         for (i, (point, weight)) in previous.into_iter().enumerate() {
             assert_eq!(

@@ -11,3 +11,5 @@ Makefile
 .idea
 .DS_store
 .claude
+
+.cache/
