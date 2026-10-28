@@ -1,0 +1,270 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling libm v0.2.16
+   Compiling autocfg v1.5.1
+   Compiling quote v1.0.47
+   Compiling num-traits v0.2.19
+   Compiling serde_core v1.0.229
+   Compiling syn v3.0.9
+   Compiling serde v1.0.229
+   Compiling bytemuck v1.25.2
+   Compiling safe_arch v1.2.0
+   Compiling serde_derive v1.0.229
+   Compiling approx v0.5.1
+   Compiling byteorder v1.5.0
+   Compiling heapless v0.8.0
+   Compiling hash32 v0.3.1
+   Compiling wide v1.7.1
+   Compiling num-complex v0.4.6
+   Compiling stable_deref_trait v1.2.1
+   Compiling thiserror v2.0.21
+   Compiling simba v0.10.2
+   Compiling glam v0.33.12
+   Compiling thiserror-impl v2.0.21
+   Compiling smallvec v1.16.4
+   Compiling log v0.4.34
+   Compiling foldhash v0.2.0
+   Compiling hashbrown v0.17.1
+   Compiling ena v0.14.4
+   Compiling rstar v0.13.0
+   Compiling glamx v0.3.1
+   Compiling serde_arrays v0.2.0
+   Compiling bitflags v2.13.2
+   Compiling num-derive v0.5.1
+   Compiling ordered-float v5.5.0
+   Compiling downcast-rs v2.0.2
+   Compiling slab v0.4.12
+   Compiling oorandom v11.1.5
+   Compiling static_assertions v1.1.0
+   Compiling arrayvec v0.7.8
+   Compiling either v1.19.0
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-rotational-sweep-research/absolutejs/research/rotational-sweep/library)
+error[E0425]: cannot find type `Vec` in this scope
+   --> ../../../../src/query/gjk/voronoi_simplex3.rs:371:28
+    |
+371 |                 .collect::<Vec<_>>();
+    |                            ^^^ not found in this scope
+    |
+help: consider importing one of these structs
+    |
+351 +     use std::vec::Vec;
+    |
+351 +     use alloc::vec::Vec;
+    |
+
+error[E0425]: cannot find type `Vec` in this scope
+   --> ../../../../src/query/gjk/voronoi_simplex3.rs:407:24
+    |
+407 |             .collect::<Vec<_>>();
+    |                        ^^^ not found in this scope
+    |
+help: consider importing one of these structs
+    |
+351 +     use std::vec::Vec;
+    |
+351 +     use alloc::vec::Vec;
+    |
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/bounding_volume/aabb.rs:96:12
+   |
+96 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unexpected `cfg` condition value: `bytemuck`
+   --> ../../../../src/bounding_volume/bounding_sphere.rs:108:12
+    |
+108 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+    |            ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+    = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/shape/ball.rs:38:12
+   |
+38 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+ --> ../../../../src/shape/capsule.rs:9:12
+  |
+9 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+  |            ^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+  = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+  = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/shape/cuboid.rs:58:12
+   |
+58 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/shape/segment.rs:59:12
+   |
+59 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/shape/triangle.rs:72:12
+   |
+72 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/shape/cone.rs:65:12
+   |
+65 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+  --> ../../../../src/shape/cylinder.rs:64:12
+   |
+64 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+   |            ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+   = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `bytemuck`
+   --> ../../../../src/shape/tetrahedron.rs:104:12
+    |
+104 | #[cfg_attr(feature = "bytemuck", derive(bytemuck::Pod, bytemuck::Zeroable))]
+    |            ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `alloc`, `bytemuck-serialize`, `default`, `dim2`, `dim3`, `downcast-rs`, `ena`, `encase`, `enhanced-determinism`, `f32`, `f64`, `hashbrown`, `improved_fixed_point_support`, `parallel`, `required-features`, `rkyv`, `rstar`, `serde`, `serde-serialize`, `serde_arrays`, `simd8`, `slab`, `smallvec`, `spade`, `std`, and `wavefront`
+    = help: consider adding `bytemuck` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+  --> ../../../../src/math/vector_ext.rs:80:15
+   |
+80 |         #[cfg(target_arch = "spirv")]
+   |               ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+  --> ../../../../src/math/vector_ext.rs:88:19
+   |
+88 |         #[cfg(not(target_arch = "spirv"))]
+   |                   ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+  --> ../../../../src/math/vector_ext.rs:96:15
+   |
+96 |         #[cfg(target_arch = "spirv")]
+   |               ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/math/vector_ext.rs:104:19
+    |
+104 |         #[cfg(not(target_arch = "spirv"))]
+    |                   ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/math/vector_ext.rs:125:15
+    |
+125 |         #[cfg(target_arch = "spirv")]
+    |               ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/math/vector_ext.rs:133:19
+    |
+133 |         #[cfg(not(target_arch = "spirv"))]
+    |                   ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/math/vector_ext.rs:141:15
+    |
+141 |         #[cfg(target_arch = "spirv")]
+    |               ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/math/vector_ext.rs:149:19
+    |
+149 |         #[cfg(not(target_arch = "spirv"))]
+    |                   ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/shape/feature_id.rs:499:19
+    |
+499 |         #[cfg(not(target_arch = "spirv"))]
+    |                   ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/shape/feature_id.rs:526:19
+    |
+526 |         #[cfg(not(target_arch = "spirv"))]
+    |                   ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `spirv`
+   --> ../../../../src/shape/feature_id.rs:550:19
+    |
+550 |         #[cfg(not(target_arch = "spirv"))]
+    |                   ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `target_arch` are: `aarch64`, `amdgpu`, `arm`, `arm64ec`, `avr`, `bpf`, `csky`, `hexagon`, `loongarch32`, `loongarch64`, `m68k`, `mips`, `mips32r6`, `mips64`, `mips64r6`, `msp430`, `nvptx64`, `powerpc`, `powerpc64`, `riscv32`, `riscv64`, `s390x`, `sparc`, `sparc64`, `wasm32`, `wasm64`, `x86`, `x86_64`, and `xtensa`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+For more information about this error, try `rustc --explain E0425`.
+warning: `parry3d` (lib test) generated 21 warnings
+error: could not compile `parry3d` (lib test) due to 2 previous errors; 21 warnings emitted

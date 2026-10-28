@@ -76,3 +76,14 @@ This is not a released engine and is not yet game-qualified.
 The cost.rs pre-integration benchmark must be run at its recorded source commit
 d0b5593 to compare the original engine; after native routing both arms would
 call the new library for rotations. Old comparison outputs are retained.
+
+## Native feature qualification
+
+All selected runtime-feature library suites pass: 3D/f32 85, 3D/f64 84,
+2D/f32 98 and 2D/f64 98. Allocation-enabled no-std passes for both 3D types.
+The published baseline's witness-test module lacked a Vec import and discarded
+six return values forbidden by deny(unused_results); test-only fixes preserve
+all assertions. Initial logs are retained. The new no-std module needed a scoped
+Float import for sqrt; its initial failure and successful retries are retained.
+No production GJK algorithm changes are included. Whole-engine/browser/game
+qualification and independent builds remain outstanding.

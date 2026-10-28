@@ -7,6 +7,8 @@ use crate::{
     },
 };
 
+#[cfg(not(feature = "std"))]
+use crate::num::Float;
 use glamx::{DQuat, DVec3};
 fn vec(v: Vector) -> DVec3 {
     DVec3::new(v.x as f64, v.y as f64, v.z as f64)
