@@ -1,9 +1,9 @@
 {
   "rows": [
     {
-      "candidateFraction": 0.04078364744782448,
-      "candidateIterations": 2,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.10000000149011612,
+      "candidateIterations": 1,
+      "candidateStatus": "Separated",
       "clip": 0.10000000149011612,
       "endPlaneGap": 0.0016886740922927856,
       "expected": "Separated",
@@ -15,9 +15,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.04078364744782448,
-      "candidateIterations": 2,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.19147931039333344,
+      "candidateIterations": 6,
+      "candidateStatus": "Hit",
       "clip": 1.0,
       "endPlaneGap": 0.0016886740922927856,
       "expected": "Hit",
@@ -29,9 +29,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
+      "candidateFraction": 0.10000000149011612,
       "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateStatus": "Separated",
       "clip": 0.10000000149011612,
       "endPlaneGap": 0.0016886740922927856,
       "expected": "Separated",
@@ -43,9 +43,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
-      "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.19146329164505005,
+      "candidateIterations": 6,
+      "candidateStatus": "Hit",
       "clip": 1.0,
       "endPlaneGap": 0.0016886740922927856,
       "expected": "Hit",
@@ -57,9 +57,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
+      "candidateFraction": 0.10000000149011612,
       "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateStatus": "Separated",
       "clip": 0.10000000149011612,
       "endPlaneGap": 0.0016887187957763672,
       "expected": "Separated",
@@ -71,9 +71,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
-      "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.19148042798042297,
+      "candidateIterations": 6,
+      "candidateStatus": "Hit",
       "clip": 1.0,
       "endPlaneGap": 0.0016887187957763672,
       "expected": "Hit",
@@ -85,9 +85,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
+      "candidateFraction": 0.10000000149011612,
       "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateStatus": "Separated",
       "clip": 0.10000000149011612,
       "endPlaneGap": 0.0016887187957763672,
       "expected": "Separated",
@@ -99,9 +99,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
-      "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.19147172570228577,
+      "candidateIterations": 6,
+      "candidateStatus": "Hit",
       "clip": 1.0,
       "endPlaneGap": 0.0016887187957763672,
       "expected": "Hit",
@@ -113,9 +113,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0586174875497818,
-      "candidateIterations": 3,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.10000000149011612,
+      "candidateIterations": 1,
+      "candidateStatus": "Separated",
       "clip": 0.10000000149011612,
       "endPlaneGap": 0.0016886901576071978,
       "expected": "Separated",
@@ -127,9 +127,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0586174875497818,
-      "candidateIterations": 3,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.19147829711437225,
+      "candidateIterations": 6,
+      "candidateStatus": "Hit",
       "clip": 1.0,
       "endPlaneGap": 0.0016886901576071978,
       "expected": "Hit",
@@ -141,9 +141,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
+      "candidateFraction": 0.10000000149011612,
       "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateStatus": "Separated",
       "clip": 0.10000000149011612,
       "endPlaneGap": 0.0016886901576071978,
       "expected": "Separated",
@@ -155,9 +155,9 @@
       "status": "Separated"
     },
     {
-      "candidateFraction": 0.0,
-      "candidateIterations": 1,
-      "candidateStatus": "Failed",
+      "candidateFraction": 0.19147337973117828,
+      "candidateIterations": 6,
+      "candidateStatus": "Hit",
       "clip": 1.0,
       "endPlaneGap": 0.0016886901576071978,
       "expected": "Hit",

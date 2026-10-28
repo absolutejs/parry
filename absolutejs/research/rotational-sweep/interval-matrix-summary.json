@@ -1,0 +1,14 @@
+{
+  "cases": 432,
+  "candidateHits": 168,
+  "candidateSeparated": 264,
+  "candidateFailed": 0,
+  "oracleStatusMismatches": 0,
+  "maxQueries": 15,
+  "baselineMisses": 168,
+  "hitPlaneGapPerScale": [
+    1.0361064035464551e-05,
+    1.2606225230878686e-05
+  ],
+  "scope": "Private diagnostic candidate; explicit corner-plane test oracle; not engine or continuous arbitrary-geometry qualification"
+}

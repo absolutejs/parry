@@ -1,0 +1,29 @@
+   Compiling absolutejs-certified-normal-qualification v0.0.0 (/home/alexkahn/alex/parry-rotational-sweep-research/absolutejs/research/rotational-sweep)
+error[E0432]: unresolved imports `glamx::DQuat`, `glamx::DVec3`
+ --> interval_candidate.rs:5:13
+  |
+5 | use glamx::{DQuat,DVec3};
+  |             ^^^^^ ^^^^^ no `DVec3` in the root
+  |             |
+  |             no `DQuat` in the root
+  |
+help: a similar name exists in the module
+  |
+5 - use glamx::{DQuat,DVec3};
+5 + use glamx::{Quat,DVec3};
+  |
+help: a similar name exists in the module
+  |
+5 - use glamx::{DQuat,DVec3};
+5 + use glamx::{DQuat,Vec3};
+  |
+
+error[E0689]: can't call method `next_up` on ambiguous numeric type `{float}`
+  --> interval_candidate.rs:17:51
+   |
+17 |  (14.0*radius*delta.length_squared()/min_norm_sq).next_up()
+   |                                                   ^^^^^^^
+
+Some errors have detailed explanations: E0432, E0689.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `absolutejs-certified-normal-qualification` (bin "rotational-sweep-probe") due to 2 previous errors

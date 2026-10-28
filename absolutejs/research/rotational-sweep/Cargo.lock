@@ -7,6 +7,7 @@ name = "absolutejs-certified-normal-qualification"
 version = "0.0.0"
 dependencies = [
  "bincode",
+ "glamx",
  "parry3d",
  "serde_json",
 ]

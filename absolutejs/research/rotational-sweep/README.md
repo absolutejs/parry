@@ -31,3 +31,19 @@ normalized quaternion derivative/curvature and each proxy's radius about its
 center of mass, with a 25-query cap. Its initial witness-derived plane is too
 weak: all 12 cases return Failed, including clear controls. This is explicitly
 rejected, not a fix. Exact source and result are retained before refinement.
+
+The f32 two-plane variant clears all six clipped controls but returns Failed
+before all six impacts because its conservative rounding allowance exceeds the
+tiny 1e-5 slop. Retained source/results are interval_candidate_f32.rs and
+interval-candidate-f32-margin.json. A missing f64 feature compile failure is also
+retained. The higher-precision candidate leaves query geometry/API unchanged,
+uses f64 only for projected motion bounds, and does not normalize supplied
+endpoint quaternions before interpolation. It evaluates the actual affine
+segment's minimum norm, including slightly nonunit stored endpoints.
+
+The expanded 432-case plane matrix matches all oracle classifications: 168 Hit,
+264 Separated, no Failed; at most 15 distance queries. Scale, shape order, world
+orientation, COM offsets, quaternion sign, three rotation spans and clipped time
+are covered. The independent oracle explicitly evaluates corner/plane geometry;
+its sampling only brackets the test root and is not used by the candidate. These
+are initial results, not production engine/game qualification or a general proof.
