@@ -13,3 +13,13 @@ CARGO_BUILD_JOBS=2 cargo test --locked --offline --release --manifest-path absol
 The original tree capture, provenance, baseline failure, traces and 40-case scale/depth sweep are committed to `alexkahndev/hello-world-absolutejs`, `docs/physics-build-2026-10-27/`. Across 360 normalized single-precision query controls per build, maximum distance error against the analytic floor plane falls from 14.720223 cm to 0.000695405 cm. These isolated results do not qualify a new game solver. WASM snapshot replay and full tree-contact tests remain required in `@absolutejs/rapier3d` before adopting or publishing its native change.
 
 Consumers must pin a tested source revision. This fork is not a crates.io release and does not alter the upstream crate version. The original Apache-2.0 license and authorship remain intact.
+
+## Scale-independent compound inertia
+
+The source now also corrects principal-inertia reconstruction using normalized,
+bounded Jacobi rotations. Small tensors and repeated moments no longer use a
+scale-dependent cubic eigenvector fallback. Both numeric precisions are covered
+by 2,688 tensor/aggregation controls plus the existing contact-witness regressions.
+See `research/inertia-reconstruction/README.md` for baseline failures, source and
+consumer qualification, costs and remaining physics limitations. The npm consumer
+pins the exact tested native source commit; this fork is not a crates.io release.

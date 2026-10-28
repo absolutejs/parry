@@ -43,3 +43,19 @@ Before adoption: validate no-std, rebuild and qualify the Rapier WASM engine,
 repeat the game fixture and existing package/browser regressions, compare two
 independent native builds, and release through the actual package repositories.
 This does not solve the separate articulated COM/angular integration drift.
+
+## WASM consumer qualification
+
+Rapier 0.13.0 pins source commit c566aabd77be8ac7a427c2b704860c47e34657b9.
+Its candidate passes 189 package tests / 77,522 assertions, declaration and
+GPU-disabled browser checks. Two independent native builds and all 49 packaged
+distribution files match exactly. Native SHA256 is
+a6f06627b5b95ff15b87fbe45bf8dfd19eeb78b4f949a912e3fed5805fbcc62b.
+The game additionally checks 80 rigid-transport cases: all 40 articulated cases
+are unchanged; compound differences and small per-case regressions are explicitly
+recorded. Forty saved first-departure captures per version replay exactly.
+
+This fork remains a Git-pinned native dependency, not a crates.io publication.
+The actual npm consumer release is @absolutejs/rapier3d@0.13.0; its package and
+registry audit is recorded in that repository. Full source correction and native
+regressions remain in this canonical fork rather than an installed-source patch.
