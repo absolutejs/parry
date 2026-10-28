@@ -11,3 +11,7 @@ bincode = "1.3.3"
 [[test]]
 name = "heightfield_frames"
 path = "heightfield_frames.rs"
+
+[[test]]
+name = "composite_ccd"
+path = "composite_ccd.rs"

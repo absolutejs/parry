@@ -1,0 +1,33 @@
+   Compiling absolutejs-triangle-contact-qualification v0.0.0 (/home/alexkahn/alex/parry-triangle-contact-research/absolutejs/research/triangle-contact)
+    Finished `release` profile [optimized] target(s) in 1.68s
+     Running composite_ccd.rs (.cache/research-target/release/deps/composite_ccd-a93868d72b132194)
+
+running 2 tests
+test composite_sweep_bounds_include_rotational_arc_between_clear_endpoints ... FAILED
+test rotating_tip_crosses_one_sided_heightfield_with_stationary_centroid ... FAILED
+
+failures:
+
+---- composite_sweep_bounds_include_rotational_arc_between_clear_endpoints stdout ----
+
+thread 'composite_sweep_bounds_include_rotational_arc_between_clear_endpoints' (54) panicked at composite_ccd.rs:31:2:
+assertion `left == right` failed: direct SweepToiOutput { status: Separated, fraction: 1.0, point: Vec3(0.0, 0.0, 0.0), normal: Vec3(0.0, 0.0, 0.0) }
+  left: Separated
+ right: Hit
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- rotating_tip_crosses_one_sided_heightfield_with_stationary_centroid stdout ----
+
+thread 'rotating_tip_crosses_one_sided_heightfield_with_stationary_centroid' (55) panicked at composite_ccd.rs:16:2:
+assertion `left == right` failed: one-sided SweepToiOutput { status: Separated, fraction: 1.0, point: Vec3(0.0, 0.0, 0.0), normal: Vec3(0.0, 0.0, 0.0) }; two-sided SweepToiOutput { status: Hit, fraction: 0.74085635, point: Vec3(-1.7321343, 4.7266483e-5, -0.096153855), normal: Vec3(0.0, 1.0, 0.0) }
+  left: Separated
+ right: Hit
+
+
+failures:
+    composite_sweep_bounds_include_rotational_arc_between_clear_endpoints
+    rotating_tip_crosses_one_sided_heightfield_with_stationary_centroid
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test composite_ccd`

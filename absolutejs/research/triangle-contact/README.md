@@ -57,3 +57,33 @@ translated heightfield frames must also make collider-space diagnostic access
 explicit and tested. Otherwise physics may be correct while contact inspection
 silently reports wrong positions. This is a release blocker, not a reason to
 remove the frame or hide inaccurate observations.
+
+## Broader game qualification blocks adoption
+
+Private Rapier archive `0.16.2-heightfield-frame-research.0` passes 227 package
+tests and corrects exact old-snapshot replay (319.683 mm to 0.000114 mm), but
+variant 0 at 960 Hz newly violates the game's 20 mm clearance bound. Game
+research branch `research/heightfield-frame-qualification` retains the 24-case
+comparison, snapshots and onset trace. Internal-edge constraints do not resolve
+it. This branch must not be released/adopted on the strength of focused tests.
+
+## Separate continuous-collision reductions
+
+`composite_ccd.rs` adds two strict physical regressions without changing CCD
+production source. A 40-degree rotation takes a bar tip from above a flat
+heightfield to below it while its centroid remains fixed above ground. The
+ordinary two-sided query detects a hit at fraction 0.74085635; the one-sided
+query incorrectly returns separated. This isolates the centroid/minimum-radius
+front-side early-out as nonconservative for rotating elongated shapes.
+
+The other fixture has clear endpoints at 87/93 degrees but intersects a plane
+near the middle of that six-degree arc. Both endpoint AABBs miss the plane and
+the midpoint AABB crosses it. However, the **direct** triangle sweep already
+returns separated, so this fixture does not isolate composite broad-phase
+culling: the direct assertion fails before the composite assertion. Preserve
+that failed control and investigate the underlying sweep termination as well.
+Neither standalone issue is yet proven to cause the captured whole-tree sink.
+
+A separate smaller GJK-normal investigation starts from the published Parry
+revision in `~/alex/parry-certified-normal-research`. It does not include this
+branch's persistent-frame change. Keep those hypotheses and evidence distinct.
