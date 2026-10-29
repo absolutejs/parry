@@ -1,0 +1,78 @@
+{
+  "scope": "Exact-decimal orientation of the captured binary32 simplex, independent of Parry.",
+  "sourceLogSha256": "a327be401ed98e14cc5c528782cf59a2323e42470d79e58b2fa0ef706a654800",
+  "binary32Points": [
+    [
+      -96.64373779296875,
+      -9.37240219116211,
+      9.312273025512695
+    ],
+    [
+      103.35626220703125,
+      9.435497283935547,
+      -190.68772888183594
+    ],
+    [
+      103.35626220703125,
+      10.063037872314453,
+      9.312273025512695
+    ],
+    [
+      103.35626220703125,
+      9.435497283935547,
+      -190.68772888183594
+    ]
+  ],
+  "faces": [
+    {
+      "face": [
+        0,
+        1,
+        2
+      ],
+      "opposite": 3,
+      "oppositeOrientationExact": "0E-51",
+      "originOrientationExact": "-402.138820770535810211754323972854763269424438476562500",
+      "originStrictlyOutside": false,
+      "originPlaneDistance": "0.01000628569603811496296048062321087852744380873932782309504296807251375998391000498296857699051229101"
+    },
+    {
+      "face": [
+        0,
+        1,
+        3
+      ],
+      "opposite": 2,
+      "oppositeOrientationExact": "0E-51",
+      "originOrientationExact": "0E-51",
+      "originStrictlyOutside": false,
+      "originPlaneDistance": null
+    },
+    {
+      "face": [
+        0,
+        2,
+        3
+      ],
+      "opposite": 1,
+      "oppositeOrientationExact": "0E-51",
+      "originOrientationExact": "402.138820770535810211754323972854763269424438476562500",
+      "originStrictlyOutside": false,
+      "originPlaneDistance": "0.01000628569603811496296048062321087852744380873932782309504296807251375998391000498296857699051229101"
+    },
+    {
+      "face": [
+        1,
+        2,
+        3
+      ],
+      "opposite": 0,
+      "oppositeOrientationExact": "0E-51",
+      "originOrientationExact": "0E-51",
+      "originStrictlyOutside": false,
+      "originPlaneDistance": null
+    }
+  ],
+  "outsideAtLeastOneFace": false,
+  "degenerateVolume": true
+}

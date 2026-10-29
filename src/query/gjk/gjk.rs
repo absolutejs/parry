@@ -480,6 +480,10 @@ where
         proj = simplex.project_origin_and_reduce();
 
         if simplex.dimension() == DIM {
+            #[cfg(feature = "std")]
+            std::eprintln!("TERRAIN_TRACE dim={} min={} best={} eps={} best_dir={:?} dir={:?} niter={}",DIM,min_bound,best_min_bound,_eps_tol,best_min_dir,dir,niter);
+            #[cfg(feature = "std")]
+            std::eprintln!("TERRAIN_POINTS {:?}",[simplex.point(0).point.to_array(),simplex.point(1).point.to_array(),simplex.point(2).point.to_array(),simplex.point(3).point.to_array()]);
             if min_bound >= _eps_tol {
                 if exact_dist {
                     let (p1, p2) = result(simplex, true);
