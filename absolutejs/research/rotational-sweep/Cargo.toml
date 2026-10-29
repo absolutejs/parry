@@ -28,3 +28,7 @@ path = "controls.rs"
 [[bin]]
 name = "rotational-sweep-cost"
 path = "cost.rs"
+
+[[test]]
+name = "oak-contact-normal"
+path = "oak-contact.rs"

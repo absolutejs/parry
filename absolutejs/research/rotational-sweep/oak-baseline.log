@@ -1,0 +1,21 @@
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-rotational-contact-research/crates/parry3d)
+   Compiling absolutejs-certified-normal-qualification v0.0.0 (/home/alexkahn/alex/parry-rotational-contact-research/absolutejs/research/rotational-sweep)
+    Finished `release` profile [optimized] target(s) in 37.13s
+     Running oak-contact.rs (/home/alexkahn/alex/parry-rotational-sweep-research/.cache/rotational-sweep/release/deps/oak_contact_normal-f7cea44e29583f1c)
+
+running 1 test
+recenter=false depth_cm=-20.193651 normal=Vec3(0.9210024, -0.10942602, 0.37387225)
+
+thread 'captured_oak_cached_direction_respects_triangle_plane_bound' (221) panicked at oak-contact.rs:22:3:
+false depth -20.193651 cm, recenter=false
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test captured_oak_cached_direction_respects_triangle_plane_bound ... FAILED
+
+failures:
+
+failures:
+    captured_oak_cached_direction_respects_triangle_plane_bound
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test oak-contact-normal`
