@@ -87,3 +87,21 @@ all assertions. Initial logs are retained. The new no-std module needed a scoped
 Float import for sqrt; its initial failure and successful retries are retained.
 No production GJK algorithm changes are included. Whole-engine/browser/game
 qualification and independent builds remain outstanding.
+
+## Combined direction/rotation research
+
+This branch adds only the GJK bound-associated direction correction from
+`a26d29f` to native-qualified interval sweep source `627113c`. No frame change
+or composite sweep bounds are included. The captured oak fixture fails with
+-20.193651 cm on unmodified interval code (`oak-baseline.log`, ab81105). With
+the correction it stays within -0.000571 cm in 12 origin/order/repeated-query
+controls. The independent captured plane bound is about 0.001265 cm. This
+assertion is a fixture bound; no runtime tolerances change.
+
+`combined-matrix.json` is exactly identical to the prior native 432-case report.
+All five original sweep controls and four prior captured heightfield controls
+pass. Selected library feature sets `required-features,std,alloc` pass
+84/83/97/97 tests (3D-f32/3D-f64/2D-f32/2D-f64). Unlike the earlier runs these
+sets omit serde, explaining one fewer serialization test in each set. Both 3D
+alloc/no-std checks pass. Full engine qualification is still required; prior
+GJK-only engines had whole-tree regressions and these checks do not waive them.

@@ -32,3 +32,7 @@ path = "cost.rs"
 [[test]]
 name = "oak-contact-normal"
 path = "oak-contact.rs"
+
+[[test]]
+name="prior-heightfield-normal"
+path="heightfield_queries.rs"

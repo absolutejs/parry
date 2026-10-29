@@ -1,0 +1,12 @@
+   Compiling absolutejs-certified-normal-qualification v0.0.0 (/home/alexkahn/alex/parry-rotational-contact-research/absolutejs/research/rotational-sweep)
+    Finished `release` profile [optimized] target(s) in 8.59s
+     Running heightfield_queries.rs (/home/alexkahn/alex/parry-rotational-sweep-research/.cache/rotational-sweep/release/deps/prior_heightfield_normal-34743f4ea98793bf)
+
+running 4 tests
+test after_heightfield_second ... ok
+test after_heightfield_first ... ok
+test before_heightfield_first ... ok
+test before_heightfield_second ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
