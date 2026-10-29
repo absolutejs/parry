@@ -74,5 +74,13 @@
     }
   ],
   "outsideAtLeastOneFace": false,
-  "degenerateVolume": true
+  "degenerateVolume": true,
+  "duplicateVertexPairs": [
+    [
+      1,
+      3
+    ]
+  ],
+  "originOutsideDegenerateAffineHull": true,
+  "certifiedOriginNotContained": true
 }

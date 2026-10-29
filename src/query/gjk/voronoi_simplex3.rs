@@ -71,6 +71,13 @@ impl VoronoiSimplex {
                 }
             }
             2 => {
+                // An existing CSO vertex cannot extend this face. Testing its
+                // distance to the normalized face plane alone is insufficient:
+                // roundoff can report a nonzero distance even for an identical
+                // vertex, creating a degenerate tetrahedron and false overlap.
+                if self.vertices[..3].iter().any(|vertex| vertex.point == pt.point) {
+                    return false;
+                }
                 let ab = self.vertices[1] - self.vertices[0];
                 let ac = self.vertices[2] - self.vertices[0];
                 let ap = pt - self.vertices[0];
@@ -418,4 +425,39 @@ mod witness_regression_tests {
             assert_eq!(simplex.prev_proj_coord(i), weight);
         }
     }
+    #[test]
+    fn captured_face_rejects_identical_cso_vertex_without_losing_witnesses() {
+        use crate::query::gjk::{CsoPoint, VoronoiSimplex};
+        for scale in [0.01 as Real, 1.0, 100.0] {
+            for repeated in 0..3 {
+                let points = [
+                    Vector::new(-96.64373779296875 as Real, -9.37240219116211 as Real, 9.312273025512695 as Real),
+                    Vector::new(103.35626220703125 as Real, 9.435497283935547 as Real, -190.68772888183594 as Real),
+                    Vector::new(103.35626220703125 as Real, 10.063037872314453 as Real, 9.312273025512695 as Real),
+                ].map(|p| CsoPoint::single_point(p * scale));
+                let mut simplex = VoronoiSimplex::new();
+                simplex.reset(points[0]);
+                let _ = simplex.project_origin_and_reduce();
+                for point in &points[1..] {
+                    assert!(simplex.add_point(*point));
+                    let _ = simplex.project_origin_and_reduce();
+                }
+                assert_eq!(simplex.dimension(), 2);
+                let before = (0..3).map(|i| (*simplex.point(i), simplex.proj_coord(i))).collect::<Vec<_>>();
+                let point = simplex.point(repeated).point;
+                // Same CSO position, distinct original witnesses: identity of
+                // the full CsoPoint is not the duplicate criterion.
+                let duplicate = CsoPoint::new_with_point(point, point * 0.5, point * -0.5);
+                assert!(!simplex.add_point(duplicate), "scale={scale}, repeated={repeated}");
+                assert_eq!(simplex.dimension(), 2);
+                for (i, (vertex, weight)) in before.into_iter().enumerate() {
+                    assert_eq!(*simplex.point(i), vertex);
+                    assert_eq!(*simplex.prev_point(i), vertex);
+                    assert_eq!(simplex.proj_coord(i), weight);
+                    assert_eq!(simplex.prev_proj_coord(i), weight);
+                }
+            }
+        }
+    }
+
 }

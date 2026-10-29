@@ -1,0 +1,63 @@
+   Compiling absolutejs-certified-normal-qualification v0.0.0 (/home/alexkahn/alex/parry-terrain-contact-research/absolutejs/research/rotational-sweep)
+warning: function `vec` is never used
+ --> interval_candidate.rs:6:4
+  |
+6 | fn vec(v:Vector)->DVec3 { DVec3::new(v.x as f64,v.y as f64,v.z as f64) }
+  |    ^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `endpoints` is never used
+ --> interval_candidate.rs:7:4
+  |
+7 | fn endpoints(s:&Sweep)->(DQuat,DQuat) {
+  |    ^^^^^^^^^
+
+warning: function `curvature` is never used
+  --> interval_candidate.rs:12:4
+   |
+12 | fn curvature(s:&Sweep,p:&ToiProxy)->f64 {
+   |    ^^^^^^^^^
+
+warning: function `projected_pair` is never used
+  --> interval_candidate.rs:20:4
+   |
+20 | fn projected_pair(s:&Sweep,p:&ToiProxy,t:Real,axes:[Vector;2])->[(f64,f64,f64,f64,f64);2] {
+   |    ^^^^^^^^^^^^^^
+
+warning: function `candidate` is never used
+  --> interval_candidate.rs:36:8
+   |
+36 | pub fn candidate(a:&ToiProxy,sa:&Sweep,b:&ToiProxy,sb:&Sweep,max_fraction:Real,slop:Real)->(SweepToiOutput,u32) {
+   |        ^^^^^^^^^
+
+warning: `absolutejs-certified-normal-qualification` (test "existing-sweep-controls") generated 5 warnings
+    Finished `release` profile [optimized] target(s) in 30.05s
+     Running controls.rs (/home/alexkahn/alex/parry-rotational-sweep-research/.cache/rotational-sweep/release/deps/existing_sweep_controls-6e4061c263eda90f)
+
+running 5 tests
+test tests::ball_hits_static_box ... ok
+test tests::ball_misses_box ... ok
+test tests::box_vs_box_face_impact ... ok
+test tests::overlapped_at_start_returns_fraction_zero ... ok
+test tests::rotating_bar_hits_ball ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running oak-contact.rs (/home/alexkahn/alex/parry-rotational-sweep-research/.cache/rotational-sweep/release/deps/oak_contact_normal-3283c556005cf750)
+
+running 1 test
+test captured_oak_cached_direction_respects_triangle_plane_bound ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running heightfield_queries.rs (/home/alexkahn/alex/parry-rotational-sweep-research/.cache/rotational-sweep/release/deps/prior_heightfield_normal-803fd7b743659802)
+
+running 4 tests
+test after_heightfield_second ... ok
+test after_heightfield_first ... ok
+test before_heightfield_first ... ok
+test before_heightfield_second ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

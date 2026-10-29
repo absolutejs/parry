@@ -1,0 +1,11 @@
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-terrain-contact-research/crates/parry3d)
+   Compiling absolutejs-terrain-contact-qualification v0.0.0 (/home/alexkahn/alex/parry-terrain-contact-research/absolutejs/research/terrain-contact)
+    Finished `release` profile [optimized] target(s) in 1m 15s
+     Running contact.rs (/home/alexkahn/alex/parry-rotational-sweep-research/.cache/rotational-sweep/release/deps/terrain_contact-5a0cce49328f77e5)
+
+running 1 test
+normal=Vec3(-0.096072406, 0.9953692, -0.0031928825) points=[0.010005895, 0.77755296, 86.99234, 87.603195, 0.009992448]
+test cached_approach_keeps_the_near_triangle_contact ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

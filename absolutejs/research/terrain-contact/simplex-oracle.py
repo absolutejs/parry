@@ -19,5 +19,10 @@ with localcontext() as ctx:
   a,b,c=[p[i] for i in face];n=cross(sub(b,a),sub(c,a));opp=dot(n,sub(p[opposite],a));origin=dot(n,[-x for x in a]);norm2=dot(n,n)
   rows.append({'face':face,'opposite':opposite,'oppositeOrientationExact':str(opp),'originOrientationExact':str(origin),'originStrictlyOutside':opp*origin<0,'originPlaneDistance':str(abs(origin)/norm2.sqrt()) if norm2 else None})
  result={'scope':__doc__,'sourceLogSha256':hashlib.sha256(log.encode()).hexdigest(),'binary32Points':points,'faces':rows,'outsideAtLeastOneFace':any(r['originStrictlyOutside'] for r in rows),'degenerateVolume':all(Decimal(r['oppositeOrientationExact'])==0 for r in rows)}
+result['duplicateVertexPairs']=[[i,j] for i in range(4) for j in range(i+1,4) if points[i]==points[j]]
+result['originOutsideDegenerateAffineHull']=result['degenerateVolume'] and any(r['originPlaneDistance'] is not None and Decimal(r['originPlaneDistance'])>0 for r in rows)
+result['certifiedOriginNotContained']=result['outsideAtLeastOneFace'] or result['originOutsideDegenerateAffineHull']
+assert result['duplicateVertexPairs']==[[1,3]]
+assert result['certifiedOriginNotContained']
 (root/'simplex-oracle.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))
