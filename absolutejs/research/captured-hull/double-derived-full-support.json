@@ -1,0 +1,64 @@
+{
+  "sourceSha256": "9220a7374b7f75e7feafd2a51b2e343d471bf8f85b07cd96b1468af6e23d5dfd",
+  "scriptSha256": "f51af577f07160f70854897921bb7ff1a767039e4b44cab77700c0033c298165",
+  "rows": {
+    "quickhull": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 73,
+      "worstInputPlaneViolation": {
+        "triangle": 60,
+        "originalPoint": 11,
+        "distanceCentimetres": 157.70357622188604
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212851.26697075024,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "polyhedron": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 219,
+      "worstInputPlaneViolation": {
+        "triangle": 60,
+        "originalPoint": 11,
+        "distanceCentimetres": 157.70357622188604
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212818.841537279,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "export": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 67,
+      "worstInputPlaneViolation": {
+        "triangle": 60,
+        "originalPoint": 11,
+        "distanceCentimetres": 157.70357622188604
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212851.26701055677,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "doubleDerivedFloatPolyhedron": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 213,
+      "worstInputPlaneViolation": {
+        "triangle": 15,
+        "originalPoint": 5,
+        "distanceCentimetres": 0.17310819699540117
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212819.01790648405,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "doubleQuickhull": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 0,
+      "worstInputPlaneViolation": {
+        "distanceCentimetres": 0
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212850.8326563805,
+      "allBoundaryVerticesAreOriginalInputs": true
+    }
+  }
+}

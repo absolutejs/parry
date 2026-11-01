@@ -21,6 +21,9 @@ fn main(){
  print!("],");
  let points64:Vec<_>=points.iter().map(|p|parry3d_f64::math::Vector::new(p.x as f64,p.y as f64,p.z as f64)).collect();
  let (dv,di)=parry3d_f64::transformation::try_convex_hull(&points64).expect("Double hull failed");
+ let restored:Vec<_>=dv.iter().map(|p|Vector::new(p.x as f32,p.y as f32,p.z as f32)).collect();
+ let dpoly=ConvexPolyhedron::from_convex_mesh(restored,&di).expect("Double-derived float polyhedron failed");
+ let (dpv,dpi)=dpoly.to_trimesh();mesh("doubleDerivedFloatPolyhedron",&dpv,&dpi);print!(",");
  print!("\"doubleQuickhull\":{{\"positions\":[");
  for(i,v)in dv.iter().flat_map(|v|[v.x,v.y,v.z]).enumerate(){if i>0{print!(",");}print!("{:?}",v);}
  print!("],\"indices\":[");for(i,v)in di.iter().flatten().enumerate(){if i>0{print!(",");}print!("{}",v);}println!("]}}}}");

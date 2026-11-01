@@ -2,7 +2,7 @@ from predicates import *
 root=Path(__file__).parent;source=root/(sys.argv[1] if len(sys.argv)>1 else 'baseline.json');out=source.with_name(source.stem+'-audit.json')
 if out.exists():raise ValueError('Evidence exists')
 p=json.loads(source.read_text());rows={}
-for name in ['quickhull','polyhedron','export']+(['doubleQuickhull'] if 'doubleQuickhull' in p else []):
+for name in ['quickhull','polyhedron','export']+[key for key in ['doubleQuickhull','doubleDerivedFloatPolyhedron'] if key in p]:
  m=p[name];v=[tuple(map(F,m['positions'][i:i+3])) for i in range(0,len(m['positions']),3)];tris=[tuple(v[k] for k in m['indices'][i:i+3]) for i in range(0,len(m['indices']),3)];planes=[plane(t) for t in tris];hits=[];worst={'distance':0}
  for i,(n,d) in enumerate(planes):
   norm=math.hypot(*map(float,n))

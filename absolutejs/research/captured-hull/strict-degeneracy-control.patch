@@ -1,0 +1,16 @@
+diff --git a/src/transformation/convex_hull3/triangle_facet.rs b/src/transformation/convex_hull3/triangle_facet.rs
+index 5524918..f5ff28d 100644
+--- a/src/transformation/convex_hull3/triangle_facet.rs
++++ b/src/transformation/convex_hull3/triangle_facet.rs
+@@ -25,8 +25,9 @@ impl TriangleFacet {
+ 
+         TriangleFacet {
+             valid: true,
+-            affinely_dependent: Triangle::new(points[p1], points[p2], points[p3])
+-                .is_affinely_dependent(),
++            // Research control: distinguish exact computed degeneracy from the
++            // area threshold that makes every point visible to a thin facet.
++            affinely_dependent: p1p2.cross(p1p3).length_squared() == 0.0,
+             normal,
+             adj: [0, 0, 0],
+             indirect_adj_id: [0, 0, 0],

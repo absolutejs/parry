@@ -1,0 +1,52 @@
+{
+  "sourceSha256": "828e743da22680281acd53a4e052d1baaf4e3dcd2848cc7759708879ffc2d764",
+  "scriptSha256": "f51af577f07160f70854897921bb7ff1a767039e4b44cab77700c0033c298165",
+  "rows": {
+    "quickhull": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 73,
+      "worstInputPlaneViolation": {
+        "triangle": 60,
+        "originalPoint": 11,
+        "distanceCentimetres": 157.70357622188604
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212851.26697075024,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "polyhedron": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 219,
+      "worstInputPlaneViolation": {
+        "triangle": 60,
+        "originalPoint": 11,
+        "distanceCentimetres": 157.70357622188604
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212818.841537279,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "export": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 67,
+      "worstInputPlaneViolation": {
+        "triangle": 60,
+        "originalPoint": 11,
+        "distanceCentimetres": 157.70357622188604
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212851.26701055677,
+      "allBoundaryVerticesAreOriginalInputs": true
+    },
+    "doubleQuickhull": {
+      "inputPointCount": 39,
+      "positiveExactPlaneTests": 0,
+      "worstInputPlaneViolation": {
+        "distanceCentimetres": 0
+      },
+      "degenerateTriangles": 0,
+      "signedVolumeCubicCentimetres": 212850.8326563805,
+      "allBoundaryVerticesAreOriginalInputs": true
+    }
+  }
+}

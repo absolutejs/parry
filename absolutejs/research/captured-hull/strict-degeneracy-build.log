@@ -1,0 +1,30 @@
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d)
+warning: unused import: `crate::shape::Triangle`
+  --> /home/alexkahn/alex/parry-hull-boundary/crates/parry3d/../../src/transformation/convex_hull3/triangle_facet.rs:2:5
+   |
+ 2 | use crate::shape::Triangle;
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: the lint level is defined here
+  --> /home/alexkahn/alex/parry-hull-boundary/crates/parry3d/../../src/lib.rs:16:9
+   |
+16 | #![warn(unused_imports)]
+   |         ^^^^^^^^^^^^^^
+
+warning: `parry3d` (lib) generated 1 warning (run `cargo fix --lib -p parry3d` to apply 1 suggestion)
+   Compiling parry3d-f64 v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d-f64)
+warning: unused import: `crate::shape::Triangle`
+  --> /home/alexkahn/alex/parry-hull-boundary/crates/parry3d-f64/../../src/transformation/convex_hull3/triangle_facet.rs:2:5
+   |
+ 2 | use crate::shape::Triangle;
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: the lint level is defined here
+  --> /home/alexkahn/alex/parry-hull-boundary/crates/parry3d-f64/../../src/lib.rs:16:9
+   |
+16 | #![warn(unused_imports)]
+   |         ^^^^^^^^^^^^^^
+
+warning: `parry3d-f64` (lib) generated 1 warning (run `cargo fix --lib -p parry3d-f64` to apply 1 suggestion)
+   Compiling absolutejs-captured-hull v0.0.0 (/home/alexkahn/alex/parry-hull-boundary/absolutejs/research/captured-hull)
+    Finished `release` profile [optimized] target(s) in 37.50s
