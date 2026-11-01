@@ -68,6 +68,7 @@ arrayvec = { workspace = true }
 simba = { workspace = true, features = ["wide"] }
 glamx = { workspace = true, features = ["approx", "f64", "i64"] }
 approx = { workspace = true }
+robust = { workspace = true }
 serde = { workspace = true, optional = true, features = ["rc"] }
 serde_arrays = { workspace = true, optional = true }
 rkyv = { workspace = true, optional = true }

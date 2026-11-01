@@ -7,3 +7,4 @@ publish = false
 [dependencies]
 parry3d = { path = "../../../crates/parry3d", default-features = false, features = ["required-features", "std", "alloc", "enhanced-determinism"] }
 parry3d-f64 = { path = "../../../crates/parry3d-f64", default-features = false, features = ["required-features", "std", "alloc", "enhanced-determinism"] }
+robust = { version = "=1.2.0", default-features = false }

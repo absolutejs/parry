@@ -90,6 +90,16 @@ pub fn try_get_initial_mesh(
         dimension += 1;
     }
 
+    // Covariance is useful for conditioning, but its fixed numerical threshold
+    // is not a geometric rank certificate. In double precision a thin solid
+    // can be represented accurately while its smallest covariance eigenvalue
+    // falls below that threshold. Do not emit a two-sided planar mesh for a
+    // point cloud with a certified nonzero tetrahedral volume.
+    #[cfg(feature = "f64")]
+    if dimension < 3 && has_tetrahedral_volume(original_points) {
+        dimension = 3;
+    }
+
     match dimension {
         0 => {
             // The hull is a point.
@@ -224,6 +234,36 @@ pub fn try_get_initial_mesh(
         }
         _ => Err(ConvexHullError::Unreachable),
     }
+}
+
+/// Exact-sign predicates distinguish a thin three-dimensional cloud from a
+/// truly planar one without perturbing its coordinates or lowering a tolerance.
+#[cfg(feature = "f64")]
+fn has_tetrahedral_volume(points: &[Vector3]) -> bool {
+    use robust::{orient2d, orient3d, Coord, Coord3D};
+    let Some(a) = points.first().copied() else {
+        return false;
+    };
+    let Some(b) = points.iter().copied().find(|p| *p != a) else {
+        return false;
+    };
+    let projected = |p: Vector3, i: usize, j: usize| Coord { x: p[i], y: p[j] };
+    let Some(c) = points.iter().copied().find(|p| {
+        [(0, 1), (0, 2), (1, 2)].iter().any(|&(i, j)| {
+            orient2d(projected(a, i, j), projected(b, i, j), projected(*p, i, j)) != 0.0
+        })
+    }) else {
+        return false;
+    };
+    let wide = |p: Vector3| Coord3D {
+        x: p.x,
+        y: p.y,
+        z: p.z,
+    };
+    points
+        .iter()
+        .copied()
+        .any(|d| orient3d(wide(a), wide(b), wide(c), wide(d)) != 0.0)
 }
 
 #[cfg(test)]

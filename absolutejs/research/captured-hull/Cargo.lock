@@ -8,6 +8,7 @@ version = "0.0.0"
 dependencies = [
  "parry3d",
  "parry3d-f64",
+ "robust",
 ]
 
 [[package]]
@@ -257,6 +258,7 @@ dependencies = [
  "num-derive",
  "num-traits",
  "ordered-float",
+ "robust",
  "rstar",
  "simba",
  "slab",

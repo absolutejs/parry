@@ -1,0 +1,12 @@
+   Compiling absolutejs-captured-hull v0.0.0 (/home/alexkahn/alex/parry-hull-boundary/absolutejs/research/captured-hull)
+    Finished `release` profile [optimized] target(s) in 1.35s
+     Running tests/rank.rs (absolutejs/research/captured-hull/target/release/deps/rank-52fd2d91cf045446)
+
+running 4 tests
+test captured_thin_exports_keep_their_volume ... ok
+test existing_float32_hull_is_unchanged ... ok
+test thin_tetrahedra_are_not_planar ... ok
+test truly_planar_points_keep_zero_volume ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

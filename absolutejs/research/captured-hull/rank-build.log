@@ -1,0 +1,5 @@
+   Compiling robust v1.2.0
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d)
+   Compiling parry3d-f64 v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d-f64)
+   Compiling absolutejs-captured-hull v0.0.0 (/home/alexkahn/alex/parry-hull-boundary/absolutejs/research/captured-hull)
+    Finished `release` profile [optimized] target(s) in 38.19s
