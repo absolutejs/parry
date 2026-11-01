@@ -1,0 +1,158 @@
+{"attempt": 2, "removedOriginalIndex": 0, "remaining": 38, "accepted": true, "crossing": [58, 54]}
+{"attempt": 3, "removedOriginalIndex": 1, "remaining": 37, "accepted": true, "crossing": [56, 52]}
+{"attempt": 4, "removedOriginalIndex": 2, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 5, "removedOriginalIndex": 3, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 6, "removedOriginalIndex": 4, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 7, "removedOriginalIndex": 5, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 8, "removedOriginalIndex": 6, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 9, "removedOriginalIndex": 7, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 10, "removedOriginalIndex": 8, "remaining": 36, "accepted": false, "crossing": null}
+{"attempt": 11, "removedOriginalIndex": 9, "remaining": 36, "accepted": true, "crossing": [56, 52]}
+{"attempt": 12, "removedOriginalIndex": 2, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 13, "removedOriginalIndex": 3, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 14, "removedOriginalIndex": 4, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 15, "removedOriginalIndex": 5, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 16, "removedOriginalIndex": 6, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 17, "removedOriginalIndex": 7, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 18, "removedOriginalIndex": 8, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 19, "removedOriginalIndex": 10, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 20, "removedOriginalIndex": 11, "remaining": 35, "accepted": false, "crossing": null}
+{"attempt": 21, "removedOriginalIndex": 12, "remaining": 35, "accepted": true, "crossing": [54, 50]}
+{"attempt": 22, "removedOriginalIndex": 2, "remaining": 34, "accepted": false, "crossing": null}
+{"attempt": 23, "removedOriginalIndex": 3, "remaining": 34, "accepted": false, "crossing": null}
+{"attempt": 24, "removedOriginalIndex": 4, "remaining": 34, "accepted": false, "crossing": null}
+{"attempt": 25, "removedOriginalIndex": 5, "remaining": 34, "accepted": false, "crossing": null}
+{"attempt": 26, "removedOriginalIndex": 6, "remaining": 34, "accepted": false, "crossing": null}
+{"attempt": 27, "removedOriginalIndex": 7, "remaining": 34, "accepted": true, "crossing": [36, 29]}
+{"attempt": 28, "removedOriginalIndex": 2, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 29, "removedOriginalIndex": 3, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 30, "removedOriginalIndex": 4, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 31, "removedOriginalIndex": 5, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 32, "removedOriginalIndex": 6, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 33, "removedOriginalIndex": 8, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 34, "removedOriginalIndex": 10, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 35, "removedOriginalIndex": 11, "remaining": 33, "accepted": false, "crossing": null}
+{"attempt": 36, "removedOriginalIndex": 13, "remaining": 33, "accepted": true, "crossing": [35, 27]}
+{"attempt": 37, "removedOriginalIndex": 2, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 38, "removedOriginalIndex": 3, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 39, "removedOriginalIndex": 4, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 40, "removedOriginalIndex": 5, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 41, "removedOriginalIndex": 6, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 42, "removedOriginalIndex": 8, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 43, "removedOriginalIndex": 10, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 44, "removedOriginalIndex": 11, "remaining": 32, "accepted": false, "crossing": null}
+{"attempt": 45, "removedOriginalIndex": 14, "remaining": 32, "accepted": true, "crossing": [34, 27]}
+{"attempt": 46, "removedOriginalIndex": 2, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 47, "removedOriginalIndex": 3, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 48, "removedOriginalIndex": 4, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 49, "removedOriginalIndex": 5, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 50, "removedOriginalIndex": 6, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 51, "removedOriginalIndex": 8, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 52, "removedOriginalIndex": 10, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 53, "removedOriginalIndex": 11, "remaining": 31, "accepted": false, "crossing": null}
+{"attempt": 54, "removedOriginalIndex": 15, "remaining": 31, "accepted": true, "crossing": [40, 27]}
+{"attempt": 55, "removedOriginalIndex": 2, "remaining": 30, "accepted": true, "crossing": [42, 39]}
+{"attempt": 56, "removedOriginalIndex": 3, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 57, "removedOriginalIndex": 4, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 58, "removedOriginalIndex": 5, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 59, "removedOriginalIndex": 6, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 60, "removedOriginalIndex": 8, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 61, "removedOriginalIndex": 10, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 62, "removedOriginalIndex": 11, "remaining": 29, "accepted": false, "crossing": null}
+{"attempt": 63, "removedOriginalIndex": 16, "remaining": 29, "accepted": true, "crossing": [40, 32]}
+{"attempt": 64, "removedOriginalIndex": 3, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 65, "removedOriginalIndex": 4, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 66, "removedOriginalIndex": 5, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 67, "removedOriginalIndex": 6, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 68, "removedOriginalIndex": 8, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 69, "removedOriginalIndex": 10, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 70, "removedOriginalIndex": 11, "remaining": 28, "accepted": false, "crossing": null}
+{"attempt": 71, "removedOriginalIndex": 17, "remaining": 28, "accepted": true, "crossing": [38, 35]}
+{"attempt": 72, "removedOriginalIndex": 3, "remaining": 27, "accepted": false, "crossing": null}
+{"attempt": 73, "removedOriginalIndex": 4, "remaining": 27, "accepted": true, "crossing": [34, 14]}
+{"attempt": 74, "removedOriginalIndex": 3, "remaining": 26, "accepted": false, "crossing": null}
+{"attempt": 75, "removedOriginalIndex": 5, "remaining": 26, "accepted": false, "crossing": null}
+{"attempt": 76, "removedOriginalIndex": 6, "remaining": 26, "accepted": false, "crossing": null}
+{"attempt": 77, "removedOriginalIndex": 8, "remaining": 26, "accepted": false, "crossing": null}
+{"attempt": 78, "removedOriginalIndex": 10, "remaining": 26, "accepted": false, "crossing": null}
+{"attempt": 79, "removedOriginalIndex": 11, "remaining": 26, "accepted": false, "crossing": null}
+{"attempt": 80, "removedOriginalIndex": 18, "remaining": 26, "accepted": true, "crossing": [34, 31]}
+{"attempt": 81, "removedOriginalIndex": 3, "remaining": 25, "accepted": false, "crossing": null}
+{"attempt": 82, "removedOriginalIndex": 5, "remaining": 25, "accepted": false, "crossing": null}
+{"attempt": 83, "removedOriginalIndex": 6, "remaining": 25, "accepted": false, "crossing": null}
+{"attempt": 84, "removedOriginalIndex": 8, "remaining": 25, "accepted": false, "crossing": null}
+{"attempt": 85, "removedOriginalIndex": 10, "remaining": 25, "accepted": false, "crossing": null}
+{"attempt": 86, "removedOriginalIndex": 11, "remaining": 25, "accepted": false, "crossing": null}
+{"attempt": 87, "removedOriginalIndex": 19, "remaining": 25, "accepted": true, "crossing": [32, 29]}
+{"attempt": 88, "removedOriginalIndex": 3, "remaining": 24, "accepted": false, "crossing": null}
+{"attempt": 89, "removedOriginalIndex": 5, "remaining": 24, "accepted": false, "crossing": null}
+{"attempt": 90, "removedOriginalIndex": 6, "remaining": 24, "accepted": true, "crossing": [28, 15]}
+{"attempt": 91, "removedOriginalIndex": 3, "remaining": 23, "accepted": false, "crossing": null}
+{"attempt": 92, "removedOriginalIndex": 5, "remaining": 23, "accepted": false, "crossing": null}
+{"attempt": 93, "removedOriginalIndex": 8, "remaining": 23, "accepted": false, "crossing": null}
+{"attempt": 94, "removedOriginalIndex": 10, "remaining": 23, "accepted": false, "crossing": null}
+{"attempt": 95, "removedOriginalIndex": 11, "remaining": 23, "accepted": false, "crossing": null}
+{"attempt": 96, "removedOriginalIndex": 20, "remaining": 23, "accepted": true, "crossing": [28, 25]}
+{"attempt": 97, "removedOriginalIndex": 3, "remaining": 22, "accepted": false, "crossing": null}
+{"attempt": 98, "removedOriginalIndex": 5, "remaining": 22, "accepted": false, "crossing": null}
+{"attempt": 99, "removedOriginalIndex": 8, "remaining": 22, "accepted": false, "crossing": null}
+{"attempt": 100, "removedOriginalIndex": 10, "remaining": 22, "accepted": false, "crossing": null}
+{"attempt": 101, "removedOriginalIndex": 11, "remaining": 22, "accepted": false, "crossing": null}
+{"attempt": 102, "removedOriginalIndex": 21, "remaining": 22, "accepted": true, "crossing": [28, 25]}
+{"attempt": 103, "removedOriginalIndex": 3, "remaining": 21, "accepted": false, "crossing": null}
+{"attempt": 104, "removedOriginalIndex": 5, "remaining": 21, "accepted": false, "crossing": null}
+{"attempt": 105, "removedOriginalIndex": 8, "remaining": 21, "accepted": false, "crossing": null}
+{"attempt": 106, "removedOriginalIndex": 10, "remaining": 21, "accepted": false, "crossing": null}
+{"attempt": 107, "removedOriginalIndex": 11, "remaining": 21, "accepted": false, "crossing": null}
+{"attempt": 108, "removedOriginalIndex": 22, "remaining": 21, "accepted": true, "crossing": [28, 25]}
+{"attempt": 109, "removedOriginalIndex": 3, "remaining": 20, "accepted": false, "crossing": null}
+{"attempt": 110, "removedOriginalIndex": 5, "remaining": 20, "accepted": false, "crossing": null}
+{"attempt": 111, "removedOriginalIndex": 8, "remaining": 20, "accepted": false, "crossing": null}
+{"attempt": 112, "removedOriginalIndex": 10, "remaining": 20, "accepted": false, "crossing": null}
+{"attempt": 113, "removedOriginalIndex": 11, "remaining": 20, "accepted": false, "crossing": null}
+{"attempt": 114, "removedOriginalIndex": 23, "remaining": 20, "accepted": true, "crossing": [26, 23]}
+{"attempt": 115, "removedOriginalIndex": 3, "remaining": 19, "accepted": false, "crossing": null}
+{"attempt": 116, "removedOriginalIndex": 5, "remaining": 19, "accepted": false, "crossing": null}
+{"attempt": 117, "removedOriginalIndex": 8, "remaining": 19, "accepted": false, "crossing": null}
+{"attempt": 118, "removedOriginalIndex": 10, "remaining": 19, "accepted": false, "crossing": null}
+{"attempt": 119, "removedOriginalIndex": 11, "remaining": 19, "accepted": false, "crossing": null}
+{"attempt": 120, "removedOriginalIndex": 24, "remaining": 19, "accepted": true, "crossing": [26, 23]}
+{"attempt": 121, "removedOriginalIndex": 3, "remaining": 18, "accepted": false, "crossing": null}
+{"attempt": 122, "removedOriginalIndex": 5, "remaining": 18, "accepted": false, "crossing": null}
+{"attempt": 123, "removedOriginalIndex": 8, "remaining": 18, "accepted": false, "crossing": null}
+{"attempt": 124, "removedOriginalIndex": 10, "remaining": 18, "accepted": false, "crossing": null}
+{"attempt": 125, "removedOriginalIndex": 11, "remaining": 18, "accepted": false, "crossing": null}
+{"attempt": 126, "removedOriginalIndex": 25, "remaining": 18, "accepted": true, "crossing": [25, 21]}
+{"attempt": 127, "removedOriginalIndex": 3, "remaining": 17, "accepted": true, "crossing": [22, 19]}
+{"attempt": 128, "removedOriginalIndex": 5, "remaining": 16, "accepted": false, "crossing": null}
+{"attempt": 129, "removedOriginalIndex": 8, "remaining": 16, "accepted": false, "crossing": null}
+{"attempt": 130, "removedOriginalIndex": 10, "remaining": 16, "accepted": false, "crossing": null}
+{"attempt": 131, "removedOriginalIndex": 11, "remaining": 16, "accepted": false, "crossing": null}
+{"attempt": 132, "removedOriginalIndex": 26, "remaining": 16, "accepted": true, "crossing": [20, 17]}
+{"attempt": 133, "removedOriginalIndex": 5, "remaining": 15, "accepted": false, "crossing": null}
+{"attempt": 134, "removedOriginalIndex": 8, "remaining": 15, "accepted": false, "crossing": null}
+{"attempt": 135, "removedOriginalIndex": 10, "remaining": 15, "accepted": false, "crossing": null}
+{"attempt": 136, "removedOriginalIndex": 11, "remaining": 15, "accepted": false, "crossing": null}
+{"attempt": 137, "removedOriginalIndex": 27, "remaining": 15, "accepted": true, "crossing": [18, 15]}
+{"attempt": 138, "removedOriginalIndex": 5, "remaining": 14, "accepted": false, "crossing": null}
+{"attempt": 139, "removedOriginalIndex": 8, "remaining": 14, "accepted": true, "crossing": [16, 13]}
+{"attempt": 140, "removedOriginalIndex": 5, "remaining": 13, "accepted": false, "crossing": null}
+{"attempt": 141, "removedOriginalIndex": 10, "remaining": 13, "accepted": false, "crossing": null}
+{"attempt": 142, "removedOriginalIndex": 11, "remaining": 13, "accepted": false, "crossing": null}
+{"attempt": 143, "removedOriginalIndex": 28, "remaining": 13, "accepted": true, "crossing": [12, 4]}
+{"attempt": 144, "removedOriginalIndex": 5, "remaining": 12, "accepted": false, "crossing": null}
+{"attempt": 145, "removedOriginalIndex": 10, "remaining": 12, "accepted": false, "crossing": null}
+{"attempt": 146, "removedOriginalIndex": 11, "remaining": 12, "accepted": false, "crossing": null}
+{"attempt": 147, "removedOriginalIndex": 29, "remaining": 12, "accepted": true, "crossing": [12, 4]}
+{"attempt": 148, "removedOriginalIndex": 5, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 149, "removedOriginalIndex": 10, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 150, "removedOriginalIndex": 11, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 151, "removedOriginalIndex": 30, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 152, "removedOriginalIndex": 31, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 153, "removedOriginalIndex": 32, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 154, "removedOriginalIndex": 33, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 155, "removedOriginalIndex": 34, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 156, "removedOriginalIndex": 35, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 157, "removedOriginalIndex": 36, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 158, "removedOriginalIndex": 37, "remaining": 11, "accepted": false, "crossing": null}
+{"attempt": 159, "removedOriginalIndex": 38, "remaining": 11, "accepted": false, "crossing": null}

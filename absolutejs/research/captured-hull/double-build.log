@@ -1,0 +1,9 @@
+     Locking 1 package to latest compatible version
+      Adding parry3d-f64 v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d-f64)
+   Compiling glam v0.33.12
+   Compiling glamx v0.3.1
+   Compiling parry3d v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d)
+   Compiling parry3d-f64 v0.31.1 (/home/alexkahn/alex/parry-hull-boundary/crates/parry3d-f64)
+   Compiling absolutejs-captured-hull v0.0.0 (/home/alexkahn/alex/parry-hull-boundary/absolutejs/research/captured-hull)
+    Finished `release` profile [optimized] target(s) in 40.31s
+     Running `absolutejs/research/captured-hull/target/release/absolutejs-captured-hull`

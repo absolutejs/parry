@@ -1,0 +1,31 @@
+{
+  "scope": "Greedy deletion preserving strict native-export crossing; not original Boolean or globally minimal input",
+  "sourceNativePin": "53ac0b0b02767300da09d092d97cef53a975c947",
+  "binarySha256": "ee8d951352fdb36d53b97d508165c07a861b9b3e6157440abf2e6e02948e61ed",
+  "scriptSha256": "fdf9d5f57cee44b6e195410ab6d6d6acef9e4d2760b680cd0cac2ad9b189dda5",
+  "inputPoints": 39,
+  "finalPoints": 12,
+  "retainedOriginalIndices": [
+    5,
+    10,
+    11,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38
+  ],
+  "attempts": 160,
+  "completedSingleDeletionSweep": true,
+  "elapsedSeconds": 4.748206406002282,
+  "finalCrossing": {
+    "crossing": [
+      12,
+      4
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+[workspace]
+[package]
+name = "absolutejs-captured-hull"
+version = "0.0.0"
+edition = "2021"
+publish = false
+[dependencies]
+parry3d = { path = "../../../crates/parry3d", default-features = false, features = ["required-features", "std", "alloc", "enhanced-determinism"] }
+parry3d-f64 = { path = "../../../crates/parry3d-f64", default-features = false, features = ["required-features", "std", "alloc", "enhanced-determinism"] }

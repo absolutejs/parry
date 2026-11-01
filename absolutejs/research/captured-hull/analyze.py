@@ -1,0 +1,17 @@
+from predicates import *
+root=Path(__file__).parent;source=root/(sys.argv[1] if len(sys.argv)>1 else 'baseline.json');out=source.with_name(source.stem+'-audit.json')
+if out.exists():raise ValueError('Evidence exists')
+p=json.loads(source.read_text());rows={}
+for name in ['quickhull','polyhedron','export']+(['doubleQuickhull'] if 'doubleQuickhull' in p else []):
+ m=p[name];v=[tuple(map(F,m['positions'][i:i+3])) for i in range(0,len(m['positions']),3)];tris=[tuple(v[k] for k in m['indices'][i:i+3]) for i in range(0,len(m['indices']),3)];planes=[plane(t) for t in tris];hits=[];worst={'distance':0}
+ for i,(n,d) in enumerate(planes):
+  norm=math.hypot(*map(float,n))
+  if not norm:continue
+  for j,x in enumerate(v):
+   side=dot(n,x)-d
+   if side>0 and float(side)/norm>worst['distance']:worst={'triangle':i,'vertex':j,'distance':float(side)/norm,'normalMagnitude':norm}
+  for j in range(i):
+   if crossing(tris[i],tris[j],planes[i],planes[j]):hits.append([i,j])
+ rows[name]={'vertices':len(v),'triangles':len(tris),'strictCrossings':hits,'maxPlaneViolationCentimetres':worst}
+report={'scope':'Host native stage comparison; exact strict crossings are not epsilon-validity certification','sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'scriptSha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'stages':rows}
+out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(rows,indent=2))

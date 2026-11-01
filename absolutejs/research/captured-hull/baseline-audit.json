@@ -1,0 +1,67 @@
+{
+  "scope": "Host native stage comparison; exact strict crossings are not epsilon-validity certification",
+  "sourceSha256": "d1db1b148a3328a0dc41273ffe4f37b6019405231c941b3c984534ed0c1b2527",
+  "scriptSha256": "408ce53999c61d3fe55e4b4f07158def2f30dcc6d11f6f0cab11ca508b464bbf",
+  "stages": {
+    "quickhull": {
+      "vertices": 33,
+      "triangles": 62,
+      "strictCrossings": [
+        [
+          60,
+          56
+        ],
+        [
+          61,
+          56
+        ]
+      ],
+      "maxPlaneViolationCentimetres": {
+        "triangle": 60,
+        "vertex": 11,
+        "distance": 157.70357622188604,
+        "normalMagnitude": 0.8408288663468418
+      }
+    },
+    "polyhedron": {
+      "vertices": 33,
+      "triangles": 62,
+      "strictCrossings": [
+        [
+          60,
+          49
+        ],
+        [
+          61,
+          49
+        ]
+      ],
+      "maxPlaneViolationCentimetres": {
+        "triangle": 60,
+        "vertex": 11,
+        "distance": 157.70357622188604,
+        "normalMagnitude": 0.8408288663468418
+      }
+    },
+    "export": {
+      "vertices": 33,
+      "triangles": 62,
+      "strictCrossings": [
+        [
+          60,
+          56
+        ],
+        [
+          61,
+          56
+        ]
+      ],
+      "maxPlaneViolationCentimetres": {
+        "triangle": 60,
+        "vertex": 11,
+        "distance": 157.70357622188604,
+        "normalMagnitude": 0.8408288663468418
+      }
+    }
+  }
+}
