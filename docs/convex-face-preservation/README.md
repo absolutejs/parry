@@ -32,3 +32,14 @@ do not claim unchanged physics for formerly merged noncoplanar meshes.
 Broader host library suites also pass: 85 F32 and 84 F64 tests. The cache/build
 process is single-job and nice-prioritized. The captured game source is backed up
 at hello-world commit 454265dd; it remains unadopted there.
+
+## Cut-material support control
+
+The full installed-archive game run found a settling regression in variant 7.
+The captured convex fragment has 48 points; its f32 hull has 63 faces after exact
+coplanarity preservation. The new focused support test confirms the selected
+contact polygon includes the extreme supporting point in the captured initial
+floor direction (zero projection deficit). Both f32 and f64 five-case suites
+pass. This rules out a missing extreme vertex for that direction; it does not
+qualify dynamic contact stability. The native one-body reproducer and release
+hold are recorded in rapier3d's convex-face-preservation research directory.
