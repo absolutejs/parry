@@ -1,6 +1,8 @@
 use crate::math::{Pose, Real, Vector};
 use crate::query::{ContactManifold, TrackedContact};
-use crate::shape::{ConvexPolyhedron, Cuboid, PolygonalFeature, PolygonalFeatureMap};
+use crate::shape::{
+    ConvexPolyhedron, Cuboid, PackedFeatureId, PolygonalFeature, PolygonalFeatureMap,
+};
 
 /// Use a box's exact face plane only when the entire convex hull lies within
 /// that face's interior column. Edge/corner, contained and deep contacts fall
@@ -60,6 +62,30 @@ pub(crate) fn contact_manifold_cuboid_interior<ManifoldData, ContactData: Defaul
                         local,
                         face_id,
                         feature.vids[i],
+                        distance,
+                        flipped,
+                    ));
+                }
+            }
+            // Normal alignment alone can choose a face away from the extreme
+            // point of a long anisotropic hull. Preserve the true supporting
+            // vertex even when it is absent from the selected/truncated face.
+            let support_id =
+                crate::utils::point_cloud_support_point_id(-local_normal, polyhedron.points());
+            let support = polyhedron.points()[support_id];
+            if !manifold
+                .points
+                .iter()
+                .any(|p| (if flipped { p.local_p1 } else { p.local_p2 }) == support)
+            {
+                let world = pos12 * support;
+                let distance = world.dot(normal) - half[axis];
+                if distance <= prediction {
+                    manifold.points.push(TrackedContact::flipped(
+                        world - normal * distance,
+                        support,
+                        face_id,
+                        PackedFeatureId::vertex(support_id as u32),
                         distance,
                         flipped,
                     ));
@@ -217,6 +243,37 @@ mod tests {
                     p.data = 42;
                 }
             }
+        }
+    }
+    #[test]
+    fn anisotropic_rotated_hulls_retain_the_deepest_vertex() {
+        use crate::math::Rot3;
+        use crate::shape::SupportMap;
+        let points: Vec<_> = (0..32)
+            .map(|i| {
+                let y = 1.0 - 2.0 * (i as Real + 0.5) / 32.0;
+                let radius = (1.0 - y * y).sqrt();
+                let angle = i as Real * 2.399963229728653;
+                Vector::new(4.0 * radius * angle.cos(), 0.2 * y, radius * angle.sin())
+            })
+            .collect();
+        let poly = ConvexPolyhedron::from_convex_hull(&points).unwrap();
+        let cube = Cuboid::new(Vector::splat(10.0));
+        for i in 0..96 {
+            let rotation =
+                Rot3::from_axis_angle(Vector::new(1.0, 2.0, 3.0).normalize(), i as Real * 0.065);
+            let support = poly.local_support_point(rotation.inverse() * -Vector::Y);
+            let translation = Vector::new(0.0, 10.0 - (rotation * support).y - 0.01, 0.0);
+            let pose = Pose::from_parts(translation, rotation);
+            let mut m = ContactManifold::<(), ()>::new();
+            assert!(contact_manifold_cuboid_interior(
+                &pose, &cube, &poly, 0.02, &mut m, false
+            ));
+            assert!(
+                m.points.iter().any(|p| p.local_p2 == support),
+                "rotation {i}: deepest support vertex missing from {} contacts",
+                m.points.len()
+            );
         }
     }
 }

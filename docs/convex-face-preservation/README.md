@@ -61,3 +61,19 @@ dispatch/identity test. The final five focused tests pass in each precision,
 covering six faces, both orders, rotations, finite edges/corners, embedded cases,
 separation and preserved contact data. Dynamic WebAssembly qualification remains
 required; no publication or adoption is implied.
+
+## Mandatory deepest support vertex
+
+Full game research.2 qualification found five real regressions. A deterministic
+96-orientation anisotropic-hull test proves a contact-generation hole: at
+orientation 30, the most normal-aligned face provides zero contacts although
+the true supporting vertex is 0.01 units inside the plane. The pre-fix failure
+is preserved in interior-support-before.log.
+
+The analytic box path now adds the exact supporting vertex when the selected
+face does not already provide it, retaining its real vertex ID and the actual
+box face ID. No tolerance, projection of the convex geometry, mass override or
+sleep change is involved. The contact count remains bounded by five. All native
+library tests pass: 91 f32 and 90 f64, including all 96 orientations. The next
+WebAssembly candidate must re-run the five failing game cases before broader
+qualification. This does not yet correct the separate generic halfspace path.
