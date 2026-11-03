@@ -123,7 +123,25 @@ pub fn contact_manifold_pfm_pfm<'a, ManifoldData, ContactData, S1, S2>(
                     PackedFeatureId::UNKNOWN,
                     (p2_1 - p1).dot(local_n1),
                 );
-                manifold.points.push(contact);
+                // The GJK witness can coincide with a point already produced by
+                // clipping. Do not submit a second constraint for a difference
+                // below the working-coordinate resolution of this query.
+                let scale = feature1.vertices[..feature1.num_vertices]
+                    .iter()
+                    .chain(feature2.vertices[..feature2.num_vertices].iter())
+                    .map(|p| p.abs().max_element())
+                    .fold(pos12.translation.abs().max_element(), Real::max);
+                if !manifold.points.iter().any(|existing| {
+                    unresolved_duplicate(
+                        existing.local_p1,
+                        existing.local_p2,
+                        contact.local_p1,
+                        contact.local_p2,
+                        scale,
+                    )
+                }) {
+                    manifold.points.push(contact);
+                }
             }
 
             if normal_constraints1.is_some() || normal_constraints2.is_some() {
@@ -162,4 +180,38 @@ pub fn contact_manifold_pfm_pfm<'a, ManifoldData, ContactData, S1, S2>(
 
     // Transfer impulses.
     manifold.match_contacts(&old_manifold_points);
+}
+
+// Research policy: a relative floating-point proximity test, not a geometric
+// coplanarity tolerance. Both body-local anchors must agree. Qualification must
+// establish whether suppressing the additional witness improves real contact.
+fn unresolved_duplicate(a1: Vector, a2: Vector, b1: Vector, b2: Vector, scale: Real) -> bool {
+    let tolerance = scale * Real::EPSILON * 16.0;
+    tolerance.is_finite()
+        && tolerance >= 0.0
+        && (a1 - b1).abs().max_element() <= tolerance
+        && (a2 - b2).abs().max_element() <= tolerance
+}
+
+#[cfg(test)]
+mod witness_coalescing_tests {
+    use super::*;
+    #[test]
+    fn duplicate_witness_policy_is_relative_and_requires_both_anchors() {
+        for scale in [0.001, 1.0, 100.0, 10000.0] {
+            let p = Vector::splat(scale);
+            let near = Vector::X * (scale * Real::EPSILON * 4.0);
+            let far = Vector::X * (scale * Real::EPSILON * 64.0);
+            assert!(unresolved_duplicate(p, -p, p + near, -p + near, scale));
+            assert!(!unresolved_duplicate(p, -p, p + far, -p, scale));
+            assert!(!unresolved_duplicate(p, -p, p, -p + far, scale));
+        }
+        assert!(!unresolved_duplicate(
+            Vector::ZERO,
+            Vector::ZERO,
+            Vector::ZERO,
+            Vector::ZERO,
+            Real::NAN
+        ));
+    }
 }
