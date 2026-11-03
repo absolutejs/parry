@@ -43,3 +43,21 @@ floor direction (zero projection deficit). Both f32 and f64 five-case suites
 pass. This rules out a missing extreme vertex for that direction; it does not
 qualify dynamic contact stability. The native one-body reproducer and release
 hold are recorded in rapier3d's convex-face-preservation research directory.
+
+## Analytic interior box-face experiment
+
+The native one-fragment reduction sleeps in 7.62 s on an analytic plane but
+remains awake at 20 s on box floors of two sizes. This branch excludes the failed
+witness-coalescing policy. It adds a bounded exact-plane contact path only for
+cuboid/convex-polyhedron pairs with no normal constraints. The entire transformed
+hull must lie strictly within the face's tangential bounds, with clearance beyond
+prediction plus penetration; its bounds center must be outside the face, and it
+must not cross the opposite face. Other cases retain the general convex query.
+The projected anchor remains in box-local coordinates; actual cuboid face IDs
+and polyhedron vertex IDs retain contact identity across steps and shape order.
+
+Fresh local-target libraries pass 89 f32 / 88 f64 tests before the additional
+dispatch/identity test. The final five focused tests pass in each precision,
+covering six faces, both orders, rotations, finite edges/corners, embedded cases,
+separation and preserved contact data. Dynamic WebAssembly qualification remains
+required; no publication or adoption is implied.

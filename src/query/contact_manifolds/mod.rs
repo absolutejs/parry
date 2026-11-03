@@ -210,3 +210,8 @@ mod contact_manifolds_voxels_shape;
 mod contact_manifolds_voxels_voxels;
 mod contact_manifolds_workspace;
 mod normals_constraint;
+
+#[cfg(feature = "dim3")]
+mod contact_manifolds_cuboid_interior;
+#[cfg(feature = "dim3")]
+pub(crate) use contact_manifolds_cuboid_interior::contact_manifold_cuboid_interior;

@@ -749,6 +749,19 @@ where
     ) -> Result<(), Unsupported> {
         use crate::query::contact_manifolds::*;
 
+        #[cfg(feature = "dim3")]
+        if normal_constraints1.is_none() && normal_constraints2.is_none() {
+            if let (Some(cuboid), Some(polyhedron)) = (shape1.as_cuboid(), shape2.as_convex_polyhedron()) {
+                if contact_manifold_cuboid_interior(pos12, cuboid, polyhedron, prediction, manifold, false) {
+                    return Ok(());
+                }
+            } else if let (Some(polyhedron), Some(cuboid)) = (shape1.as_convex_polyhedron(), shape2.as_cuboid()) {
+                if contact_manifold_cuboid_interior(&pos12.inverse(), cuboid, polyhedron, prediction, manifold, true) {
+                    return Ok(());
+                }
+            }
+        }
+
         match (shape1.shape_type(), shape2.shape_type()) {
             (ShapeType::Ball, ShapeType::Ball) => {
                 contact_manifold_ball_ball_shapes(pos12, shape1, shape2, prediction, manifold)
