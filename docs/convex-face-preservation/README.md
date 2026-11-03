@@ -43,3 +43,17 @@ floor direction (zero projection deficit). Both f32 and f64 five-case suites
 pass. This rules out a missing extreme vertex for that direction; it does not
 qualify dynamic contact stability. The native one-body reproducer and release
 hold are recorded in rapier3d's convex-face-preservation research directory.
+
+## Separate GJK-witness coalescing experiment
+
+Research only: suppress an additional GJK witness when both local anchors lie
+within a relative floating-point proximity threshold of an existing clipped
+point. This does not alter convex geometry, mass or the clipped feature IDs.
+The threshold is an experimental policy, not an exact geometric predicate or a
+claimed proof of contact stability. Dynamic qualification remains necessary.
+
+Initial shared-target Cargo logs were rejected: they contained the prior library
+binary and did not enumerate the new test. They are retained as
+rejected-shared-target-*.log. Fresh worktree-local target builds positively
+include witness_coalescing_tests and pass 86 f32 / 85 f64 library tests. Never
+reuse a sibling checkout's target directory as qualification evidence.
