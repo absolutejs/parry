@@ -469,7 +469,31 @@ impl ConvexPolyhedron {
         for e in &mut edges {
             let tri1 = triangles.get(e.faces[0] as usize)?;
             let tri2 = triangles.get(e.faces[1] as usize)?;
-            if tri1.normal.dot(tri2.normal) > 1.0 - eps {
+            // Similar normals do not imply coplanarity. Merging a shallow ridge
+            // changes its triangulation, mass properties and contact face planes.
+            // Test the represented coordinates exactly before deleting the edge.
+            let coplanar = || {
+                let wide = |id: u32| {
+                    let p = points[id as usize];
+                    robust::Coord3D {
+                        x: p.x as f64,
+                        y: p.y as f64,
+                        z: p.z as f64,
+                    }
+                };
+                tri2.vertices
+                    .iter()
+                    .filter(|id| !tri1.vertices.contains(id))
+                    .all(|id| {
+                        robust::orient3d(
+                            wide(tri1.vertices[0]),
+                            wide(tri1.vertices[1]),
+                            wide(tri1.vertices[2]),
+                            wide(*id),
+                        ) == 0.0
+                    })
+            };
+            if tri1.normal.dot(tri2.normal) > 1.0 - eps && coplanar() {
                 e.deleted = true;
             }
         }

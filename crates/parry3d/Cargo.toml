@@ -61,6 +61,7 @@ path = "../../src/lib.rs"
 required-features = ["required-features"]
 
 [dependencies]
+robust = { workspace = true }
 either = { workspace = true }
 bitflags = { workspace = true }
 downcast-rs = { workspace = true, optional = true }

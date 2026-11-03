@@ -28,6 +28,7 @@
 "dim2"=[]
 "f64"=[]
 [dependencies]
+robust = { version = "=1.2.0", default-features = false }
 "either"={"version"="1","default-features"=false}
 "bitflags"={"version"="2.3"}
 "downcast-rs"={"version"="2","default-features"=false,"features"=["sync"],"optional"=true}
@@ -51,3 +52,7 @@
 "foldhash"={"version"="0.2","default-features"=false}
 [dev-dependencies]
 "oorandom"="11"
+
+[[test]]
+name = "convex_mesh_face_preservation"
+path = "../../../../crates/parry3d/tests/convex_mesh_face_preservation.rs"
